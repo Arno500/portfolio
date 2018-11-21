@@ -1,4 +1,5 @@
 var preprod = true;
+const projets = require("./projets/projets.json");
 window.onload = bootstrap;
 
 function bootstrap() {

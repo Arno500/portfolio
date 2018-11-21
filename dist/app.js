@@ -86,14 +86,26 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./projets/projets.json":
+/*!******************************!*\
+  !*** ./projets/projets.json ***!
+  \******************************/
+/*! exports provided: 0, default */
+/***/ (function(module) {
+
+module.exports = [{}];
+
+/***/ }),
+
 /***/ "./script.js":
 /*!*******************!*\
   !*** ./script.js ***!
   \*******************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
 var preprod = true;
+const projets = __webpack_require__(/*! ./projets/projets.json */ "./projets/projets.json");
 window.onload = bootstrap;
 
 function bootstrap() {
