@@ -60,12 +60,16 @@ h1 {
   position: absolute;
   bottom: 1rem;
   right: 2em;
+
+  a {
+    color: white;
+  }
 }
 
 .preprod .check-out {
   margin-top: 1rem;
   font-size: 1rem;
-  color: #5c5c5c;
+  color: #8a8a8a;
 }
 
 .project-container {
