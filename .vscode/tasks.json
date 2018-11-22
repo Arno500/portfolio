@@ -1,0 +1,23 @@
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "isBackground": true,
+      "label": "Webpack Watch",
+      "type": "process",
+      "command": "${workspaceRoot}\\node_modules\\.bin\\webpack.cmd",
+      "args": ["--watch"],
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "new",
+        "showReuseMessage": true,
+        "clear": true
+      },
+      "problemMatcher": ["$node-sass"]
+    }
+  ]
+}
