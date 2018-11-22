@@ -97,6 +97,17 @@ module.exports = [{}];
 
 /***/ }),
 
+/***/ "./sass/styles.scss":
+/*!**************************!*\
+  !*** ./sass/styles.scss ***!
+  \**************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
 /***/ "./script.js":
 /*!*******************!*\
   !*** ./script.js ***!
@@ -104,7 +115,8 @@ module.exports = [{}];
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var preprod = true;
+__webpack_require__(/*! ./sass/styles.scss */ "./sass/styles.scss");
+var preprod = false;
 const projets = __webpack_require__(/*! ./projets/projets.json */ "./projets/projets.json");
 window.onload = bootstrap;
 
@@ -112,6 +124,7 @@ function bootstrap() {
   if (!preprod) {
     document.querySelector(".final").style.display = "block";
     document.querySelector(".preprod").style.display = "none";
+    startCommandLineMode(".terminal");
   } else {
     countdown(new Date("Jan 15, 2019 00:00:00").getTime(), ".date-counter");
 
@@ -139,6 +152,15 @@ function countdown(date, element) {
     " minutes et " +
     seconds +
     " secondes";
+}
+
+function startCommandLineMode(element) {
+  var terminal = document.querySelector(element);
+
+  terminal.insertAdjacentHTML(
+    "beforeend",
+    "<span>Bienvenue dans la console Arnaux & Co !</span><br><span>Pour commencer, tapez 'help' ou '?'</span>"
+  );
 }
 
 

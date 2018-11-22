@@ -2,8 +2,11 @@ var path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const devMode = process.env.NODE_ENV !== "production";
 
-module.exports = {
+const webpackConfig = {
   mode: "development",
+  entry: {
+    app: "./script.js"
+  },
   plugins: [
     new MiniCssExtractPlugin({
       // Options similar to the same options in webpackOptions.output
@@ -12,9 +15,6 @@ module.exports = {
       chunkFilename: devMode ? "[id].css" : "[id].[hash].css"
     })
   ],
-  entry: {
-    app: "./sass/styles.scss"
-  },
   output: {
     path: path.resolve(__dirname, "dist")
   },
@@ -30,16 +30,18 @@ module.exports = {
         ]
       }
     ]
-  }
-};
-
-module.exports = {
-  mode: "development",
-  entry: {
-    app: "./script.js"
-  },
-  output: {
-    path: path.resolve(__dirname, "dist")
   },
   devtool: "source-map" // any "source-map"-like devtool is possible
 };
+
+if (!devMode) {
+  const JavaScriptObfuscator = require("webpack-obfuscator");
+
+  webpackConfig.plugins.push(
+    new JavaScriptObfuscator({
+      rotateUnicodeArray: true
+    })
+  );
+}
+
+module.exports = webpackConfig;

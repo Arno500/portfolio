@@ -1,4 +1,5 @@
-var preprod = true;
+require("./sass/styles.scss");
+var preprod = false;
 const projets = require("./projets/projets.json");
 window.onload = bootstrap;
 
@@ -6,6 +7,7 @@ function bootstrap() {
   if (!preprod) {
     document.querySelector(".final").style.display = "block";
     document.querySelector(".preprod").style.display = "none";
+    startCommandLineMode(".terminal");
   } else {
     countdown(new Date("Jan 15, 2019 00:00:00").getTime(), ".date-counter");
 
@@ -33,4 +35,13 @@ function countdown(date, element) {
     " minutes et " +
     seconds +
     " secondes";
+}
+
+function startCommandLineMode(element) {
+  var terminal = document.querySelector(element);
+
+  terminal.insertAdjacentHTML(
+    "beforeend",
+    "<span>Bienvenue dans la console Arnaux & Co !</span><br><span>Pour commencer, tapez 'help' ou '?'</span>"
+  );
 }
