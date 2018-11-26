@@ -1,0 +1,33 @@
+.terminal {
+  width: 100%;
+
+  .command-input {
+    border: 0;
+    flex: 9999 1 auto;
+    align-self: auto;
+    background-color: transparent;
+    color: white;
+    border: none;
+    box-shadow: none;
+    width: auto;
+    padding: 0;
+    margin-left: 1rem;
+  }
+
+  * {
+    font-family: "Fira Mono", Courier New, Courier, monospace;
+  }
+
+  .command-input:focus {
+    outline: none;
+  }
+
+  .flex-input {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-content: stretch;
+    align-items: stretch;
+  }
+}

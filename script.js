@@ -1,5 +1,5 @@
 require("./sass/styles.scss");
-var preprod = false;
+var preprod = true;
 const projets = require("./projets/projets.json");
 window.onload = bootstrap;
 
@@ -38,10 +38,27 @@ function countdown(date, element) {
 }
 
 function startCommandLineMode(element) {
-  var terminal = document.querySelector(element);
+  let terminal = document.querySelector(element);
 
   terminal.insertAdjacentHTML(
     "beforeend",
     "<span>Bienvenue dans la console Arnaux & Co !</span><br><span>Pour commencer, tapez 'help' ou '?'</span>"
   );
+
+  askForCommand(element);
+}
+
+function askForCommand(element) {
+  let terminal = document.querySelector(element);
+  let input = document.createElement("input");
+  input.type = "text";
+  input.class = "command-input";
+
+  terminal.insertAdjacentHTML(
+    "beforeend",
+    "<br><div class='flex-input'><div>[root@arnodubo.is ~]#</div></div>"
+  );
+
+  let flexInput = document.querySelector(".flex-input");
+  flexInput.insertAdjacentElement("beforeend", input);
 }
