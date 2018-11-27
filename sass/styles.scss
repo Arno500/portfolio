@@ -1,19 +1,17 @@
 @import "~knacss/sass/knacss";
 
+$font-family-base: "Muli", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+  Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif !default; // system font stack
+
 * {
   box-sizing: border-box;
-  font-family: "Archivo", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  color: #f8f0fb;
+  //font-family: "Archivo", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #001792;
 }
 
 body {
   margin: 0;
   background-color: #211a1d;
-}
-
-h1 {
-  font-size: 4rem;
-  color: #8075ff;
 }
 
 .moi {
@@ -195,6 +193,61 @@ h1 {
     margin: 3rem auto;
     width: 100%;
     text-align: center;
+  }
+}
+
+body {
+  background-color: #f3f3f3;
+}
+
+.topsection {
+  height: 100vh;
+  width: 100%;
+  position: relative;
+
+  &-center {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  * {
+    font-family: "Muli", sans-serif;
+    line-height: 7rem;
+  }
+}
+
+.timebackground {
+  background: -webkit-linear-gradient(
+    top,
+    rgba(188, 199, 255, 1) 0%,
+    rgba(79, 187, 202, 0.4) 54%,
+    rgba(79, 187, 202, 0) 100%
+  );
+  position: relative;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  z-index: -10;
+  > svg {
+    position: absolute;
+    height: auto;
+    max-width: initial;
+  }
+
+  &-sun {
+    top: 10vh;
+    right: 10vh;
+    width: 25%;
+  }
+
+  &-mountains {
+    bottom: 0;
+    width: 150vw;
+    left: -50%;
   }
 }
 

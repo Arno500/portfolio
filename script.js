@@ -1,5 +1,5 @@
 require("./sass/styles.scss");
-var preprod = true;
+var preprod = false;
 const projets = require("./projets/projets.json");
 window.onload = bootstrap;
 
@@ -52,7 +52,7 @@ function askForCommand(element) {
   let terminal = document.querySelector(element);
   let input = document.createElement("input");
   input.type = "text";
-  input.class = "command-input";
+  input.classList.add("command-input");
 
   terminal.insertAdjacentHTML(
     "beforeend",

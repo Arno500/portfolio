@@ -116,7 +116,7 @@ module.exports = [{}];
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! ./sass/styles.scss */ "./sass/styles.scss");
-var preprod = true;
+var preprod = false;
 const projets = __webpack_require__(/*! ./projets/projets.json */ "./projets/projets.json");
 window.onload = bootstrap;
 
@@ -169,7 +169,7 @@ function askForCommand(element) {
   let terminal = document.querySelector(element);
   let input = document.createElement("input");
   input.type = "text";
-  input.class = "command-input";
+  input.classList.add("command-input");
 
   terminal.insertAdjacentHTML(
     "beforeend",
