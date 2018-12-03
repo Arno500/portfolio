@@ -2,12 +2,18 @@ require("./sass/styles.scss");
 var preprod = false;
 const projets = require("./projets/projets.json");
 window.onload = bootstrap;
+const Velocity = require("velocity-animate");
+
+require("./scripts/timebackground.js");
+
+//import { animateTime } from "./scripts/timebackground.js";
 
 function bootstrap() {
   if (!preprod) {
     document.querySelector(".final").style.display = "block";
     document.querySelector(".preprod").style.display = "none";
     startCommandLineMode(".terminal");
+    animateTime();
   } else {
     countdown(new Date("Jan 15, 2019 00:00:00").getTime(), ".date-counter");
 
