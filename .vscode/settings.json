@@ -1,3 +1,12 @@
 {
-    "editor.minimap.enabled": false
+  "editor.minimap.enabled": false,
+  "liveServer.settings.ignoreFiles": [
+    ".vscode/**",
+    "**/*.scss",
+    "**/*.sass",
+    "**/*.ts",
+    "**/*.svg",
+    "script.js",
+    "scripts/*"
+  ]
 }

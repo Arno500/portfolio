@@ -2,25 +2,12 @@ require("./sass/styles.scss");
 var preprod = false;
 const projets = require("./projets/projets.json");
 window.onload = bootstrap;
-const Velocity = require("velocity-animate");
-
-require("./scripts/timebackground.js");
-
-//import { animateTime } from "./scripts/timebackground.js";
+import * as anim from "./scripts/timebackground";
+import Velocity from "velocity-animate";
 
 function bootstrap() {
-  if (!preprod) {
-    document.querySelector(".final").style.display = "block";
-    document.querySelector(".preprod").style.display = "none";
-    startCommandLineMode(".terminal");
-    animateTime();
-  } else {
-    countdown(new Date("Jan 15, 2019 00:00:00").getTime(), ".date-counter");
-
-    var counter = setInterval(function() {
-      countdown(new Date("Jan 15, 2019 00:00:00").getTime(), ".date-counter");
-    }, 1000);
-  }
+  //startCommandLineMode(".terminal");
+  anim.animateTime();
 }
 
 function countdown(date, element) {

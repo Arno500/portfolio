@@ -1,5 +1,6 @@
 var path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+var webpack = require("webpack");
 const devMode = process.env.NODE_ENV !== "production";
 
 const webpackConfig = {
@@ -28,6 +29,23 @@ const webpackConfig = {
           "postcss-loader",
           "sass-loader"
         ]
+      },
+      {
+        test: /\.js$/,
+        loader: "babel-loader",
+        options: {
+          presets: [
+            [
+              "@babel/preset-env",
+              {
+                targets: {
+                  // The % refers to the global coverage of users from browserslist
+                  browsers: [">0.25%", "not ie 11", "not op_mini all"]
+                }
+              }
+            ]
+          ]
+        }
       }
     ]
   },
