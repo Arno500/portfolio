@@ -1,57 +1,29 @@
 require("./sass/styles.scss");
-var preprod = false;
-const projets = require("./projets/projets.json");
-window.onload = bootstrap;
 import * as anim from "./scripts/timebackground";
-import Velocity from "velocity-animate";
+import * as event from "./scripts/events";
+import * as term from "./scripts/terminal";
+import * as utils from "./scripts/utils";
+import Velocity from "velocity-animate/velocity";
+import "velocity-animate/velocity.ui.js";
+import * as smoothscroll from "smoothscroll-polyfill";
+import * as localforage from "localforage";
+
+localforage.config({
+  name: "arnauxandco",
+  description:
+    "L'espace de stockage du terminal, pour le portfolio d'Arno DUBOIS",
+  storeName: "portfolio"
+});
+
+window.onload = bootstrap;
 
 function bootstrap() {
-  //startCommandLineMode(".terminal");
-  anim.animateTime();
-}
-
-function countdown(date, element) {
-  var now = new Date().getTime();
-  var distance = date - now;
-
-  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-  document.querySelector(element).innerHTML =
-    days +
-    " jours, " +
-    hours +
-    " heures, " +
-    minutes +
-    " minutes et " +
-    seconds +
-    " secondes";
-}
-
-function startCommandLineMode(element) {
-  let terminal = document.querySelector(element);
-
-  terminal.insertAdjacentHTML(
-    "beforeend",
-    "<span>Bienvenue dans la console Arnaux & Co !</span><br><span>Pour commencer, tapez 'help' ou '?'</span>"
-  );
-
-  askForCommand(element);
-}
-
-function askForCommand(element) {
-  let terminal = document.querySelector(element);
-  let input = document.createElement("input");
-  input.type = "text";
-  input.classList.add("command-input");
-
-  terminal.insertAdjacentHTML(
-    "beforeend",
-    "<br><div class='flex-input'><div>[root@arnodubo.is ~]#</div></div>"
-  );
-
-  let flexInput = document.querySelector(".flex-input");
-  flexInput.insertAdjacentElement("beforeend", input);
+  smoothscroll.polyfill();
+  event.addChooserListener();
+  anim.animateBackground();
+  localforage.getItem("mode").then(value => {
+    if (value && value !== "") {
+      event.startMode(value, "noscroll");
+    }
+  });
 }

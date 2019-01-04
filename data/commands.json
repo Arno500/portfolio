@@ -1,0 +1,32 @@
+{
+  "help": "help",
+  "cd": "notallowed",
+  "rm": "rm",
+  "mail": "mail",
+  "ls": "ls",
+  "projets": "projects",
+  "aliases": {
+    "bonjour": "bonjour",
+    "hello": "bonjour",
+    "mohaio": "bonjour",
+    "hola": "bonjour",
+    "maque": "bonjour",
+    "halo": "bonjour",
+    "?": "help",
+    "mailto": "mail",
+    "ll": "ls"
+  },
+  "actions": {
+    "bonjour": "Cette commande ne vous mènera à rien, mais bonjour quand même 👋",
+    "notallowed": "Permission refusée",
+    "help": "helpCommand()",
+    "rm": "rmCommand()",
+    "mail": "mailCommand()",
+    "ls": "dist/  index.html  package.json  postcss.config.js scripts.js  styles.scss webpack.config.js cv/ img/  old/  portraitc/  sass/ styles.css  web/",
+    "projects": "projectsCommand()"
+  },
+  "helptexts": {
+    "mail": "MAIL: Cette commande permet de m'envoyer un mail.<br>La syntaxe est la suivante : mail [&lt;sujet personnalisé&gt;]",
+    "rm": "RM: Cette commande permet de supprimer un fichier.<br>La syntaxe est la suivante : rm [&lt;fichier&gt;]"
+  }
+}

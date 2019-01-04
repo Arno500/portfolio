@@ -1,23 +1,107 @@
-export function animateTime() {
-  Velocity.defaults = {
-    duration: 800,
-    easing: "swing",
-    display: "auto",
-    visibility: "auto",
-    loop: true,
-    delay: false,
-    mobileHA: true,
-    queue: false
-  };
+export function animateBackground() {
+  function rand(min, max) {
+    let result = Math.floor(Math.random() * (max - min + 1)) + min;
+    if (result === 0) {
+      return 1;
+    } else {
+      return result;
+    }
+  }
 
-  var paperPlane = document.querySelector(".timebackground-plane");
-  var sun = document.querySelector(".timebackground-sun");
-  var mountains = document.querySelector(".timebackground-mountains");
+  var isMobile = !!("ontouchstart" in window);
+  var nbPoints = isMobile ? 30 : 150;
+  var animatedBackground = document.querySelector(".animatedbackground");
+  var pointsHTML = "";
 
-  Velocity(
-    paperPlane,
-    { translateX: ["70vw", 0], translateY: ["10vh", 0] },
-    { duration: 1000, easing: "swing" }
-  );
-  return true;
+  for (let i = 0; i < nbPoints; i++) {
+    pointsHTML += "<div class='dot'></div>";
+  }
+  animatedBackground.insertAdjacentHTML("beforeEnd", pointsHTML);
+
+  var points = document.querySelectorAll(".dot");
+
+  var screenWidth = Math.max(
+      document.documentElement.clientWidth,
+      window.innerWidth || 0
+    ),
+    screenHeight = Math.max(
+      document.documentElement.clientHeight,
+      window.innerHeight || 0
+    );
+
+  var translateZMin = -400,
+    translateZMax = 325;
+
+  var containerAnimationMap = { perspective: [215, 50], opacity: [0.9, 0.55] };
+
+  animatedBackground.style["perspective-origin"] =
+    screenWidth / 2 + "px " + screenHeight * 0.45 + "px";
+
+  animeSequence();
+
+  function animeSequence() {
+    points
+      .velocity(
+        {
+          opacity: [0.8, 0]
+        },
+        { queue: false, duration: 2000, easing: "ease-in" }
+      )
+      .velocity(
+        {
+          transform: [
+            function() {
+              return (
+                "translateX(+=" +
+                rand(-screenWidth / 2.5, screenWidth / 2.5) +
+                "px) translateY(+=" +
+                rand(-screenHeight / 2.75, screenHeight / 2.75) +
+                "px) translateZ(+=" +
+                rand(translateZMin, translateZMax) +
+                "px)"
+              );
+            },
+            "ease-in-out",
+            function() {
+              return (
+                "translateX(" +
+                rand(1, screenWidth) +
+                "px) translateY(" +
+                rand(1, screenHeight) +
+                "px) translateZ(" +
+                rand(translateZMin, translateZMax) +
+                "px)"
+              );
+            }
+          ]
+        },
+        {
+          duration: 15000,
+          easing: "ease-in-out"
+        }
+      )
+      .velocity("reverse", { duration: 2000, easing: "ease-out" })
+      .velocity(
+        { opacity: "0" },
+        {
+          sync: true,
+          duration: 300,
+          easing: "ease-out",
+          complete: function() {
+            animeSequence();
+          }
+        }
+      );
+    Velocity(
+      animatedBackground,
+      { perspective: ["500px", "50px"] },
+      { duration: 3000, easing: "ease-in-out" }
+    ).velocity("reverse", {
+      sync: false,
+      duration: 1500,
+      delay: 12500
+    });
+  }
+  //Velocity.RunSequence(setup);
+  //console.dir(Velocity);
 }

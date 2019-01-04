@@ -8,5 +8,6 @@
     "**/*.svg",
     "script.js",
     "scripts/*"
-  ]
+  ],
+  "liveServer.settings.wait": 1000
 }

@@ -40,7 +40,7 @@ const webpackConfig = {
               {
                 targets: {
                   // The % refers to the global coverage of users from browserslist
-                  browsers: [">0.25%", "not ie 11", "not op_mini all"]
+                  browsers: [">0.25%", "ie 11", "not op_mini all"]
                 }
               }
             ]
@@ -48,6 +48,11 @@ const webpackConfig = {
         }
       }
     ]
+  },
+  resolve: {
+    alias: {
+      velocity: "velocity-animate/velocity"
+    }
   },
   devtool: "source-map" // any "source-map"-like devtool is possible
 };
