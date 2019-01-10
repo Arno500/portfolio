@@ -1,0 +1,78 @@
+.modal-container {
+  display: none;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #0000009e;
+  justify-content: center;
+  align-items: center;
+
+  &:focus {
+    border: none;
+  }
+
+  .modal-closer {
+    &:focus {
+      border: none;
+    }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+  }
+
+  .modal {
+    width: 90vw;
+    padding: 3rem 5rem;
+    background-color: #ebebeb;
+    border-radius: 5px;
+
+    * {
+      color: $color-text;
+    }
+
+    h3 {
+      margin-bottom: 5rem;
+    }
+
+    p {
+      font-size: 1.3rem;
+      margin-bottom: 2rem;
+    }
+
+    .youtube-iframe {
+      min-height: 40vh;
+      width: 100%;
+    }
+
+    .modal-button-closer {
+      background-color: #e1e1e1;
+      float: right;
+      margin-top: 2rem;
+      transform: translateX(15px);
+      border-radius: 3px;
+
+      &:focus {
+        border: none;
+      }
+
+      &:hover {
+        background-color: #d8d8d8;
+      }
+    }
+  }
+
+  @include respond-to(medium) {
+    .modal {
+      height: auto;
+      width: 60vw;
+    }
+  }
+}
+
+.modal-container.is-open {
+  display: block;
+}

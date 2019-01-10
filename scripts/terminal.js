@@ -2,9 +2,12 @@ import {
   showElement,
   scrollToElm,
   truncateText,
-  setCaretPosition
+  setCaretPosition,
+  stripHTML
 } from "./utils";
 import * as localforage from "localforage";
+import { projectClickHandler } from "./events";
+import * as HTMLEncoderDecoder from "html-encoder-decoder";
 
 const availableCommands = require("../data/commands.json");
 const projects = require("../data/projects.json");
@@ -65,7 +68,8 @@ function buildTerminal(
   }
   askForCommand(terminal);
   setTimeout(function() {
-    terminal.scrollTop = terminal.scrollHeight;
+    terminal.scrollTop = terminal.scrollHeight + terminal.offsetHeigh;
+    projectClickHandler();
     showElement(terminal).then(() => {
       if (scroll !== "noscroll") {
         scrollToElm(terminal, terminal.querySelector("input"));
@@ -134,14 +138,16 @@ function commandInterpreter(command) {
   if (action) {
     console.log(action);
     if (availableCommands.actions[action].slice(-2) === "()") {
-      print(
-        eval(
-          availableCommands.actions[action].slice(0, -1) +
-            '["' +
-            commandArguments +
-            '"])'
-        )
+      var functionResult = eval(
+        availableCommands.actions[action].slice(0, -1) +
+          '["' +
+          commandArguments +
+          '"])'
       );
+      print(functionResult.output);
+      if (typeof functionResult.after === "function") {
+        functionResult.after();
+      }
     } else {
       print(availableCommands.actions[action]);
     }
@@ -151,7 +157,9 @@ function commandInterpreter(command) {
     );
   }
 
-  localforage.setItem("commandHistory", commandHistory);
+  let cleanCommandHistory = commandHistory;
+
+  localforage.setItem("commandHistory", cleanCommandHistory);
   localforage.setItem(
     "terminalContent",
     document.querySelector(".terminal").innerHTML
@@ -178,19 +186,21 @@ function helpCommand(args) {
   properties.splice(-3, 3);
 
   if (args && args[0] && availableCommands.helptexts[args[0]]) {
-    return (
-      "Voici l'aide de la commande " +
-      args[0] +
-      " :<br>" +
-      availableCommands.helptexts[args[0]] +
-      ""
-    );
+    return {
+      output:
+        "Voici l'aide de la commande " +
+        args[0] +
+        " :<br>" +
+        availableCommands.helptexts[args[0]] +
+        ""
+    };
   } else {
-    return (
-      "Voici les commandes disponibles : <br>" +
-      properties +
-      "<br><br>Vous pouvez aussi trouver l'aide d'une commande, en tapant \"help\" suivi de la commande sur laquelle vous voulez obtenir de l'aide"
-    );
+    return {
+      output:
+        "Voici les commandes disponibles : <br>" +
+        properties +
+        "<br><br>Vous pouvez aussi trouver l'aide d'une commande, en tapant \"help\" suivi de la commande sur laquelle vous voulez obtenir de l'aide"
+    };
   }
 }
 
@@ -200,9 +210,12 @@ function rmCommand(args) {
     args[0] ===
       "--i-know-what-i-am-doing-right-now-on-a-website-that-is-not-mine"
   ) {
-    return "Ah là là, vous faites vraiment tout ce qu'on vous dit";
+    return { output: "Ah là là, vous faites vraiment tout ce qu'on vous dit" };
   } else {
-    return "C'est toujours une mauvaise idée. Si vous voulez être sûr, tapez --i-know-what-i-am-doing-right-now-on-a-website-that-is-not-mine";
+    return {
+      output:
+        "C'est toujours une mauvaise idée. Si vous voulez être sûr, tapez --i-know-what-i-am-doing-right-now-on-a-website-that-is-not-mine"
+    };
   }
 }
 
@@ -220,22 +233,39 @@ function mailCommand(args) {
       "_top"
     );
   }
-  return "Vous avez plus qu'à m'envoyer un mail @ <a href=\"mailto:contact@arnodubo.is?subject=J'ai%20quelques%20travaux%20pour%20vous\">contact@arnodubo.is</a>";
+  return {
+    output:
+      "Vous avez plus qu'à m'envoyer un mail @ <a href=\"mailto:contact@arnodubo.is?subject=J'ai%20quelques%20travaux%20pour%20vous\">contact@arnodubo.is</a>"
+  };
 }
 
 function projectsCommand() {
-  let output = '<div class="projects-container">';
+  let output = '<div class="projects-container card-model">';
   projects.forEach(project => {
-    output += `<div>
+    output += `<div data-name="${HTMLEncoderDecoder.encode(
+      project.name
+    )}" data-description="${HTMLEncoderDecoder.encode(
+      project.description
+    )}" data-action="${project.action}" data-type="${
+      project.type
+    }" data-link="${project.link}" data-yt-code=${project.ytCode}>
       <figure>
-        <img src="${project.thumb}" alt="${project.name}"></img>
+        <img src="${project.thumb}" alt="${HTMLEncoderDecoder.encode(
+      project.name
+    )}"></img>
         <figcaption>
-          <h1>${project.name}</h1>
-          <p>${truncateText(project.description, 20)}</p>
+          <h1>${HTMLEncoderDecoder.encode(project.name)}</h1>
+          <p>${truncateText(
+            stripHTML(project.description.replace('"', "\u0022")),
+            20
+          )}</p>
         </figcaption>
       </figure>
     </div>`;
   });
   output += "</div>";
-  return output;
+  return {
+    output,
+    after: projectClickHandler
+  };
 }

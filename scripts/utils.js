@@ -68,3 +68,7 @@ export function setCaretPosition(ctrl, pos) {
     // IE8 and below
   }
 }
+
+export function stripHTML(input) {
+  return input.replace(/<(?:.|\n)*?>/gm, "");
+}

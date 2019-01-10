@@ -1,8 +1,6 @@
 @import "_config/variables";
 @import "_config/mixins";
 @import "~knacss/sass/knacss";
-@import "~knacss/sass/knacss";
-@import "~knacss/sass/knacss";
 
 :root {
   --transitions: outline 0.4s, border 0.4s;
@@ -159,6 +157,7 @@ header {
 }
 
 @import "./terminal.scss";
+@import "./modal.scss";
 
 .hidden {
   margin-top: 0 !important;
