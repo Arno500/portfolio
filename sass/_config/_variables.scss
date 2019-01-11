@@ -141,6 +141,8 @@ $color-brand: #537aff;
 $color-primary: #a0eaff;
 $color-success: #537aff;
 $color-text: rgb(37, 37, 37);
+$color-button: #dadada;
+$color-button-hover: darken($color-button, 10%);
 $color-info: $blue-300;
 $color-warning: $orange-500;
 $color-danger: $red-500;

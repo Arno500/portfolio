@@ -3,11 +3,11 @@ import {
   scrollToElm,
   truncateText,
   setCaretPosition,
-  stripHTML
+  stripHTML,
+  encodeToHTML
 } from "./utils";
 import * as localforage from "localforage";
 import { projectClickHandler } from "./events";
-import * as HTMLEncoderDecoder from "html-encoder-decoder";
 
 const availableCommands = require("../data/commands.json");
 const projects = require("../data/projects.json");
@@ -242,22 +242,24 @@ function mailCommand(args) {
 function projectsCommand() {
   let output = '<div class="projects-container card-model">';
   projects.forEach(project => {
-    output += `<div data-name="${HTMLEncoderDecoder.encode(
+    output += `<div data-name="${encodeToHTML(
       project.name
-    )}" data-description="${HTMLEncoderDecoder.encode(
+    )}" data-description="${encodeToHTML(
       project.description
-    )}" data-action="${project.action}" data-type="${
+    )}" data-action="${encodeToHTML(project.action)}" data-type="${
       project.type
-    }" data-link="${project.link}" data-yt-code=${project.ytCode}>
+    }" data-link="${encodeToHTML(project.link)}" data-yt-code="${encodeToHTML(
+      project.ytCode
+    )}" data-link-infos="${encodeToHTML(JSON.stringify(project.linkInfos))}">
       <figure>
-        <img src="${project.thumb}" alt="${HTMLEncoderDecoder.encode(
+        <img src="${encodeToHTML(project.thumb)}" alt="${encodeToHTML(
       project.name
     )}"></img>
         <figcaption>
-          <h1>${HTMLEncoderDecoder.encode(project.name)}</h1>
+          <h1>${encodeToHTML(project.name)}</h1>
           <p>${truncateText(
             stripHTML(project.description.replace('"', "\u0022")),
-            20
+            17
           )}</p>
         </figcaption>
       </figure>

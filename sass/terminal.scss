@@ -37,20 +37,45 @@
   .card-model {
     scroll-snap-type: x proximity;
     overflow-x: auto;
-    display: flex;
-    //height: 25vh;
+    overflow-y: hidden;
+    //display: flex;
+    height: 30vh;
     cursor: auto;
     padding: 1em 1em;
+    white-space: nowrap;
 
     * {
       font-family: $font-family-base;
       color: rgb(37, 37, 37);
     }
+    & > div:not(:first-of-type) {
+      margin-left: 1rem;
+    }
+    & > div:not(:last-of-type) {
+      margin-right: 1rem;
+    }
     & > div {
-      scroll-snap-align: left;
-      width: 25vw;
-      background-color: #ebebeb;
+      scroll-snap-align: start;
+      width: 20vw;
+      height: 100%;
+      background-color: $color-button;
       border-radius: 5px;
+      transition: background-color 0.4s;
+      display: inline-block;
+      vertical-align: top;
+      white-space: initial;
+
+      &:hover {
+        background-color: $color-button-hover;
+
+        img {
+          filter: brightness(0.8);
+        }
+      }
+
+      * {
+        cursor: pointer;
+      }
 
       figure {
         margin-bottom: 0;
@@ -58,6 +83,10 @@
         img {
           border-top-left-radius: 5px;
           border-top-right-radius: 5px;
+          height: 50%;
+          width: 100%;
+          object-fit: cover;
+          transition: filter 0.4s;
         }
         figcaption {
           font-size: 1.3rem;
@@ -68,6 +97,28 @@
             margin-bottom: 0;
           }
         }
+      }
+    }
+    @include respond-to(large) {
+      height: 35vh;
+
+      & > div {
+        width: 25vw;
+      }
+    }
+    @include respond-to(medium) {
+      height: 50vh;
+
+      & > div {
+        width: 50vw;
+        scroll-snap-align: center;
+      }
+    }
+    @include respond-to(small) {
+      height: 50vh;
+
+      & > div {
+        width: 90vw;
       }
     }
   }

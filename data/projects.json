@@ -1,7 +1,7 @@
 [
   {
     "name": "Rétroception",
-    "description": "<i>Un peu comme Inception, mais en mieux. Avec de meilleurs acteurs surtout. </i><br>Quelqu'un qui se sent un peu mal va tenter de poursuivre son futur, tout en se faisant rattraper par son passé. <br><em>Télérama.fr : 4.8/5 \"éblouissant\"</em>",
+    "description": "<i>Un peu comme Inception, mais en mieux. Avec de meilleurs acteurs surtout. </i><br>Quelqu'un qui se sent un peu mal va tenter de poursuivre son futur, tout en se faisant rattraper par son passé. <br><em>Télérama.fr : 4.8/5 \"Éblouissant\"</em>",
     "thumb": "./img/projects/retroception.jpg",
     "link": "https://www.youtube.com/watch?v=IODlotDNKFY",
     "yt-code": "IODlotDNKFY",
@@ -12,6 +12,11 @@
     "name": "Feekbad",
     "description": "Vous vous demandez comment intégrer un système de retour là où vous travaillez ? Utilisez Feekbad, la plateforme open-source en Laravel et Vue.JS qui vous propose de distribuer vos votes.",
     "thumb": "./img/projects/feekbad.jpg",
-    "link": ""
+    "link": "https://gitlab.com/Arno500/feekbad",
+    "type": "link",
+    "linkInfos": {
+      "icon": "./img/icons/git.svg",
+      "title": "Explorer le dépôt"
+    }
   }
 ]

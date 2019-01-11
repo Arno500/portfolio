@@ -1,3 +1,5 @@
+import * as HTMLEncoderDecoder from "html-encoder-decoder";
+
 // Function from David Walsh: http://davidwalsh.name/css-animation-callback
 function whichTransitionEvent() {
   var t,
@@ -71,4 +73,18 @@ export function setCaretPosition(ctrl, pos) {
 
 export function stripHTML(input) {
   return input.replace(/<(?:.|\n)*?>/gm, "");
+}
+
+export function encodeToHTML(input) {
+  console.log(input);
+  if (
+    input &&
+    input !== null &&
+    input !== undefined &&
+    typeof input === "string"
+  ) {
+    return HTMLEncoderDecoder.encode(input);
+  } else {
+    return input;
+  }
 }

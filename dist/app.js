@@ -104,7 +104,7 @@ module.exports = {"help":"help","cd":"notallowed","rm":"rm","mail":"mail","ls":"
 /*! exports provided: 0, 1, default */
 /***/ (function(module) {
 
-module.exports = [{"name":"Rétroception","description":"<i>Un peu comme Inception, mais en mieux. Avec de meilleurs acteurs surtout. </i><br>Quelqu'un qui se sent un peu mal va tenter de poursuivre son futur, tout en se faisant rattraper par son passé. <br><em>Télérama.fr : 4.8/5 \"éblouissant\"</em>","thumb":"./img/projects/retroception.jpg","link":"https://www.youtube.com/watch?v=IODlotDNKFY","yt-code":"IODlotDNKFY","type":"youtube","action":"link"},{"name":"Feekbad","description":"Vous vous demandez comment intégrer un système de retour là où vous travaillez ? Utilisez Feekbad, la plateforme open-source en Laravel et Vue.JS qui vous propose de distribuer vos votes.","thumb":"./img/projects/feekbad.jpg","link":""}];
+module.exports = [{"name":"Rétroception","description":"<i>Un peu comme Inception, mais en mieux. Avec de meilleurs acteurs surtout. </i><br>Quelqu'un qui se sent un peu mal va tenter de poursuivre son futur, tout en se faisant rattraper par son passé. <br><em>Télérama.fr : 4.8/5 \"Éblouissant\"</em>","thumb":"./img/projects/retroception.jpg","link":"https://www.youtube.com/watch?v=IODlotDNKFY","yt-code":"IODlotDNKFY","type":"youtube","action":"link"},{"name":"Feekbad","description":"Vous vous demandez comment intégrer un système de retour là où vous travaillez ? Utilisez Feekbad, la plateforme open-source en Laravel et Vue.JS qui vous propose de distribuer vos votes.","thumb":"./img/projects/feekbad.jpg","link":"https://gitlab.com/Arno500/feekbad","type":"link","linkInfos":{"icon":"./img/icons/git.svg","title":"Explorer le dépôt"}}];
 
 /***/ }),
 
@@ -20513,9 +20513,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var localforage__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! localforage */ "./node_modules/localforage/dist/localforage.js");
 /* harmony import */ var localforage__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(localforage__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _events__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./events */ "./scripts/events.js");
-/* harmony import */ var html_encoder_decoder__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! html-encoder-decoder */ "./node_modules/html-encoder-decoder/lib/index.js");
-/* harmony import */ var html_encoder_decoder__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(html_encoder_decoder__WEBPACK_IMPORTED_MODULE_3__);
-
 
 
 
@@ -20701,7 +20698,7 @@ function mailCommand(args) {
 function projectsCommand() {
   var output = '<div class="projects-container card-model">';
   projects.forEach(function (project) {
-    output += "<div data-name=\"".concat(html_encoder_decoder__WEBPACK_IMPORTED_MODULE_3__["encode"](project.name), "\" data-description=\"").concat(html_encoder_decoder__WEBPACK_IMPORTED_MODULE_3__["encode"](project.description), "\" data-action=\"").concat(project.action, "\" data-type=\"").concat(project.type, "\" data-link=\"").concat(project.link, "\" data-yt-code=").concat(project.ytCode, ">\n      <figure>\n        <img src=\"").concat(project.thumb, "\" alt=\"").concat(html_encoder_decoder__WEBPACK_IMPORTED_MODULE_3__["encode"](project.name), "\"></img>\n        <figcaption>\n          <h1>").concat(html_encoder_decoder__WEBPACK_IMPORTED_MODULE_3__["encode"](project.name), "</h1>\n          <p>").concat(Object(_utils__WEBPACK_IMPORTED_MODULE_0__["truncateText"])(Object(_utils__WEBPACK_IMPORTED_MODULE_0__["stripHTML"])(project.description.replace('"', "\"")), 20), "</p>\n        </figcaption>\n      </figure>\n    </div>");
+    output += "<div data-name=\"".concat(Object(_utils__WEBPACK_IMPORTED_MODULE_0__["encodeToHTML"])(project.name), "\" data-description=\"").concat(Object(_utils__WEBPACK_IMPORTED_MODULE_0__["encodeToHTML"])(project.description), "\" data-action=\"").concat(Object(_utils__WEBPACK_IMPORTED_MODULE_0__["encodeToHTML"])(project.action), "\" data-type=\"").concat(project.type, "\" data-link=\"").concat(Object(_utils__WEBPACK_IMPORTED_MODULE_0__["encodeToHTML"])(project.link), "\" data-yt-code=\"").concat(Object(_utils__WEBPACK_IMPORTED_MODULE_0__["encodeToHTML"])(project.ytCode), "\" data-link-infos=\"").concat(Object(_utils__WEBPACK_IMPORTED_MODULE_0__["encodeToHTML"])(JSON.stringify(project.linkInfos)), "\">\n      <figure>\n        <img src=\"").concat(Object(_utils__WEBPACK_IMPORTED_MODULE_0__["encodeToHTML"])(project.thumb), "\" alt=\"").concat(Object(_utils__WEBPACK_IMPORTED_MODULE_0__["encodeToHTML"])(project.name), "\"></img>\n        <figcaption>\n          <h1>").concat(Object(_utils__WEBPACK_IMPORTED_MODULE_0__["encodeToHTML"])(project.name), "</h1>\n          <p>").concat(Object(_utils__WEBPACK_IMPORTED_MODULE_0__["truncateText"])(Object(_utils__WEBPACK_IMPORTED_MODULE_0__["stripHTML"])(project.description.replace('"', "\"")), 17), "</p>\n        </figcaption>\n      </figure>\n    </div>");
   });
   output += "</div>";
   return {
@@ -20811,11 +20808,23 @@ function animateBackground() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "build", function() { return build; });
-function build(type, data) {
+function build(type, elm) {
   var functionList = {
+    link: link,
     youtube: youtube
   };
-  return functionList[type](data);
+
+  if (functionList[type]) {
+    return functionList[type](elm);
+  } else {
+    console.error("Fonction d'affichage de modal pour ce type (".concat(type, ") non d\xE9finie : "), this);
+    return "Cette modal n'est pas compl\xE8te. Merci de m'envoyer un mail @ contact@arnodubo.is";
+  }
+}
+
+function link(data) {
+  var linkInfos = JSON.parse(data.getAttribute("data-link-infos"));
+  return "\n    <p>".concat(data.getAttribute("data-description"), "</p>\n\n    <div class=\"p-relative-centerer\">\n    <a class=\"modal-button-link\" href=\"").concat(data.getAttribute("data-link"), "\" alt=\"").concat(data.getAttribute("data-name"), "\" target=\"_blank\">\n      <img src=\"").concat(linkInfos.icon, "\" title=\"\">\n      <p>").concat(linkInfos.title, "</p>\n      </a>\n    </div>\n  ");
 }
 
 function youtube(data) {
@@ -20828,7 +20837,7 @@ function youtube(data) {
 /*!**************************!*\
   !*** ./scripts/utils.js ***!
   \**************************/
-/*! exports provided: hideElement, showElement, scrollToElm, truncateText, setCaretPosition, stripHTML */
+/*! exports provided: hideElement, showElement, scrollToElm, truncateText, setCaretPosition, stripHTML, encodeToHTML */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -20839,7 +20848,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "truncateText", function() { return truncateText; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setCaretPosition", function() { return setCaretPosition; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "stripHTML", function() { return stripHTML; });
-// Function from David Walsh: http://davidwalsh.name/css-animation-callback
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "encodeToHTML", function() { return encodeToHTML; });
+/* harmony import */ var html_encoder_decoder__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! html-encoder-decoder */ "./node_modules/html-encoder-decoder/lib/index.js");
+/* harmony import */ var html_encoder_decoder__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(html_encoder_decoder__WEBPACK_IMPORTED_MODULE_0__);
+ // Function from David Walsh: http://davidwalsh.name/css-animation-callback
+
 function whichTransitionEvent() {
   var t,
       el = document.createElement("fakeelement");
@@ -20901,6 +20914,15 @@ function setCaretPosition(ctrl, pos) {
 }
 function stripHTML(input) {
   return input.replace(/<(?:.|\n)*?>/gm, "");
+}
+function encodeToHTML(input) {
+  console.log(input);
+
+  if (input && input !== null && input !== undefined && typeof input === "string") {
+    return html_encoder_decoder__WEBPACK_IMPORTED_MODULE_0__["encode"](input);
+  } else {
+    return input;
+  }
 }
 
 /***/ })

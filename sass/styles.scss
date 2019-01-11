@@ -1,9 +1,10 @@
 @import "_config/variables";
 @import "_config/mixins";
 @import "~knacss/sass/knacss";
+@import "./utils";
 
 :root {
-  --transitions: outline 0.4s, border 0.4s;
+  --transitions: outline 0.2s, border 0.2s;
 }
 
 * {
@@ -13,7 +14,7 @@
   transition: var(--transitions);
   &:focus {
     outline: none;
-    border: $color-brand solid 5px;
+    border: $color-brand solid 3px;
   }
 }
 
@@ -165,4 +166,7 @@ header {
   height: 0 !important;
   overflow: hidden !important;
   visibility: hidden !important;
+}
+
+@include respond-to(medium) {
 }
