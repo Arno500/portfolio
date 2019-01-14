@@ -16,14 +16,26 @@ export function build(type, elm) {
 }
 
 function link(data) {
-  let linkInfos = JSON.parse(data.getAttribute("data-link-infos"));
+  const linkInfos = JSON.parse(data.getAttribute("data-link-infos"));
+  if (linkInfos.disabled) {
+    var disabledState = "disabled";
+  } else {
+    var disabledState = "";
+  }
+
+  var link = data.getAttribute("data-link");
+  if (link == "" || typeof link !== "string") {
+    var link = "";
+  } else {
+    var link = 'href="' + link + '"';
+  }
   return `
     <p>${data.getAttribute("data-description")}</p>
 
     <div class="p-relative-centerer">
-    <a class="modal-button-link" href="${data.getAttribute(
-      "data-link"
-    )}" alt="${data.getAttribute("data-name")}" target="_blank">
+    <a class="modal-button-link" ${link} alt="${data.getAttribute(
+    "data-name"
+  )}" target="_blank" ${disabledState}>
       <img src="${linkInfos.icon}" title="">
       <p>${linkInfos.title}</p>
       </a>

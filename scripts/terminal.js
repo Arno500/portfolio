@@ -12,6 +12,7 @@ import { projectClickHandler } from "./events";
 const availableCommands = require("../data/commands.json");
 const projects = require("../data/projects.json");
 var pressed = false;
+var resuming = false;
 var commandHistory = [""];
 var currentCommand = 0;
 
@@ -26,22 +27,23 @@ export function startCommandLineMode(container, scroll = "") {
   container.insertAdjacentElement("beforeend", terminal);
 
   Promise.all([
-    localforage.getItem("terminalContent"),
+    //localforage.getItem("terminalContent"),
     localforage.getItem("commandHistory")
   ])
     .then(values => {
-      if (!values[0] || !values[1]) {
-        localforage.setItem("terminalContent", "");
-        localforage.setItem("commandHistory", "[]");
+      var commandHistoryArray = JSON.parse(values[0]);
+      if (!values[0] /* || !values[1] */) {
+        //localforage.setItem("terminalContent", "");
+        localforage.setItem("commandHistory", JSON.stringify([]));
         buildTerminal("", terminal, scroll);
       } else {
-        buildTerminal(values[0], terminal, scroll);
-        commandHistory = values[1];
-        currentCommand = values[1].length;
+        buildTerminal(commandHistoryArray, terminal, scroll);
+        commandHistory = commandHistoryArray;
+        currentCommand = commandHistoryArray.length;
       }
     })
     .catch(error =>
-      console.log(
+      console.error(
         "Oopsie! Error reading into the memory of your browser. You should probably upgrade !",
         error
       )
@@ -58,18 +60,26 @@ function buildTerminal(
   terminal = document.querySelector(".terminal"),
   scroll = ""
 ) {
-  if (oldContent === "") {
-    terminal.insertAdjacentHTML(
-      "beforeend",
-      "<span>Bienvenue dans la console Arnaux & Co !</span><br><span>Pour commencer, tapez 'help' ou '?'</span><br>"
-    );
-  } else {
-    terminal.insertAdjacentHTML("beforeend", oldContent);
-  }
+  terminal.insertAdjacentHTML(
+    "beforeend",
+    "<span>Bienvenue dans la console Arnaux & Co !</span><br><span>Pour commencer, tapez 'help' ou '?'</span><br>"
+  );
   askForCommand(terminal);
+
+  if (
+    oldContent !== "" ||
+    (typeof oldContent !== "undefined" && oldContent.length > 0)
+  ) {
+    //terminal.insertAdjacentHTML("beforeend", oldContent);
+    resuming = true;
+    oldContent.forEach(command => {
+      commandInterpreter(command);
+    });
+    resuming = false;
+  }
   setTimeout(function() {
-    terminal.scrollTop = terminal.scrollHeight + terminal.offsetHeigh;
     projectClickHandler();
+    terminal.scrollTop = terminal.scrollHeight;
     showElement(terminal).then(() => {
       if (scroll !== "noscroll") {
         scrollToElm(terminal, terminal.querySelector("input"));
@@ -123,7 +133,7 @@ function keyManager(event) {
 
 function commandInterpreter(command) {
   let terminal = document.querySelector(".terminal");
-  transformInput(terminal);
+  transformInput(terminal, command);
 
   let commandArray = command.trim().split(" ");
   let extractedCommand = commandArray[0].toLowerCase();
@@ -136,7 +146,6 @@ function commandInterpreter(command) {
     availableCommands.aliases[extractedCommand];
 
   if (action) {
-    console.log(action);
     if (availableCommands.actions[action].slice(-2) === "()") {
       var functionResult = eval(
         availableCommands.actions[action].slice(0, -1) +
@@ -157,13 +166,17 @@ function commandInterpreter(command) {
     );
   }
 
-  let cleanCommandHistory = commandHistory;
+  let cleanCommandHistory = commandHistory.filter(n => {
+    if (n != "") {
+      return n;
+    }
+  });
 
-  localforage.setItem("commandHistory", cleanCommandHistory);
-  localforage.setItem(
+  localforage.setItem("commandHistory", JSON.stringify(cleanCommandHistory));
+  /* localforage.setItem(
     "terminalContent",
     document.querySelector(".terminal").innerHTML
-  );
+  ); */
   askForCommand(terminal);
 }
 
@@ -172,12 +185,12 @@ function print(content) {
   terminal.insertAdjacentHTML("beforeend", content);
 }
 
-function transformInput(terminal) {
+function transformInput(terminal, command) {
   let intro = terminal.querySelector(".prompt");
   let input = terminal.querySelector(".command-input");
   let inputContainer = terminal.querySelector(".flex-input");
 
-  inputContainer.textContent = intro.textContent + " " + input.value;
+  inputContainer.textContent = intro.textContent + " " + command;
   inputContainer.classList.remove("flex-input");
 }
 
@@ -220,22 +233,24 @@ function rmCommand(args) {
 }
 
 function mailCommand(args) {
-  if (args[0]) {
-    window.open(
-      "mailto:contact@arnodubo.is?subject=" +
-        encodeURIComponent(args.join(" ")) +
-        "&body=Bonjour%2C%0AJe%20vous%20veux%20dans%20mon%20%C3%A9quipe.%0A%0ACordialement%2C%0AMartine%20Dupont",
-      "_top"
-    );
-  } else {
-    window.open(
-      "mailto:contact@arnodubo.is?subject=J'ai%20quelques%20travaux%20pour%20vous&body=Bonjour%2C%0AJe%20vous%20veux%20dans%20mon%20%C3%A9quipe.%0A%0ACordialement%2C%0AMartine%20Dupont",
-      "_top"
-    );
+  if (!resuming) {
+    if (args[0]) {
+      window.open(
+        "mailto:contact@arnodubo.is?subject=" +
+          encodeURIComponent(args.join(" ")) +
+          "&body=Bonjour%2C%0AJe%20vous%20veux%20dans%20mon%20%C3%A9quipe.%0A%0ACordialement%2C%0AMartine%20Dupont",
+        "_top"
+      );
+    } else {
+      window.open(
+        "mailto:contact@arnodubo.is?subject=J'ai%20quelques%20travaux%20pour%20vous&body=Bonjour%2C%0AJe%20vous%20veux%20dans%20mon%20%C3%A9quipe.%0A%0ACordialement%2C%0AMartine%20Dupont",
+        "_top"
+      );
+    }
   }
   return {
     output:
-      "Vous avez plus qu'à m'envoyer un mail @ <a href=\"mailto:contact@arnodubo.is?subject=J'ai%20quelques%20travaux%20pour%20vous\">contact@arnodubo.is</a>"
+      "Vous n'avez plus qu'à m'envoyer un mail @ <a href=\"mailto:contact@arnodubo.is?subject=J'ai%20quelques%20travaux%20pour%20vous\">contact@arnodubo.is</a> !"
   };
 }
 

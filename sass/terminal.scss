@@ -56,6 +56,7 @@
     }
     & > div {
       scroll-snap-align: start;
+      scroll-margin: 1em;
       width: 20vw;
       height: 100%;
       background-color: $color-button;
@@ -100,7 +101,7 @@
       }
     }
     @include respond-to(large) {
-      height: 35vh;
+      height: 40vh;
 
       & > div {
         width: 25vw;
@@ -112,6 +113,7 @@
       & > div {
         width: 50vw;
         scroll-snap-align: center;
+        scroll-margin: initial;
       }
     }
     @include respond-to(small) {

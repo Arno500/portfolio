@@ -29,6 +29,8 @@
     padding: 3rem 5rem;
     background-color: #ebebeb;
     border-radius: 5px;
+    overflow-y: auto;
+    height: auto;
 
     * {
       color: $color-text;
@@ -79,6 +81,10 @@
         background-color: $color-button-hover;
       }
 
+      &[disabled] {
+        pointer-events: none;
+      }
+
       p {
         display: inline-block;
         margin: initial;
@@ -98,7 +104,7 @@
 
   @include respond-to(medium) {
     .modal {
-      height: auto;
+      max-height: 95%;
       width: 90vw;
     }
   }

@@ -42,6 +42,7 @@ const webpackConfig = {
                   // The % refers to the global coverage of users from browserslist
                   browsers: [">0.25%", "ie 11", "not op_mini all"]
                 }
+                //useBuiltIns: "entry"
               }
             ]
           ]

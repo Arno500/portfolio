@@ -76,7 +76,6 @@ export function stripHTML(input) {
 }
 
 export function encodeToHTML(input) {
-  console.log(input);
   if (
     input &&
     input !== null &&
@@ -86,5 +85,19 @@ export function encodeToHTML(input) {
     return HTMLEncoderDecoder.encode(input);
   } else {
     return input;
+  }
+}
+
+/* Sample function that returns boolean in case the browser is Internet Explorer*/
+export function isIEorEdge() {
+  let ua = navigator.userAgent;
+  /* MSIE used to detect old browsers and Trident used to newer ones*/
+  var is_ie = ua.indexOf("MSIE ") > -1 || ua.indexOf("Trident/") > -1;
+  var is_edge = /Edge/.test(navigator.userAgent);
+
+  if (is_ie || is_edge) {
+    return true;
+  } else {
+    return false;
   }
 }

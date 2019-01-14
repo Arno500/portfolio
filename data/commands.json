@@ -5,6 +5,7 @@
   "mail": "mail",
   "ls": "ls",
   "projets": "projects",
+  "formation": "formation",
   "aliases": {
     "bonjour": "bonjour",
     "hello": "bonjour",
@@ -14,7 +15,9 @@
     "halo": "bonjour",
     "?": "help",
     "mailto": "mail",
-    "ll": "ls"
+    "ll": "ls",
+    "projet": "projects",
+    "formations": "formation"
   },
   "actions": {
     "bonjour": "Cette commande ne vous mènera à rien, mais bonjour quand même 👋",
@@ -23,9 +26,11 @@
     "rm": "rmCommand()",
     "mail": "mailCommand()",
     "ls": "dist/  index.html  package.json  postcss.config.js scripts.js  styles.scss webpack.config.js cv/ img/  old/  portraitc/  sass/ styles.css  web/",
-    "projects": "projectsCommand()"
+    "projects": "projectsCommand()",
+    "formation": "DUT MMI (Métiers du multimédia et de l'Internet) :<br><ul><li>Une formation polyvalente en Bac + 2 : développement, graphisme, audiovisuel, communication, marketing, etc...</li><li>Donne l'envie d'apprendre de nouvelles technologies, pour ne jamais freiner la créativité et l'ouverture</li></ul>Baccalauréat Scientifique (Mention Assez Bien) : Faut-il encore le présenter ?"
   },
   "helptexts": {
+    "cd": "CD : Cette commande permet de changer de dossier. La syntaxe est la suivante : cd [&lt;dossier&gt;]",
     "mail": "MAIL: Cette commande permet de m'envoyer un mail.<br>La syntaxe est la suivante : mail [&lt;sujet personnalisé&gt;]",
     "rm": "RM: Cette commande permet de supprimer un fichier.<br>La syntaxe est la suivante : rm [&lt;fichier&gt;]"
   }

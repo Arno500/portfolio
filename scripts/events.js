@@ -40,7 +40,7 @@ function modeChecker(event) {
   } else {
     localforage.setItem("mode", "mode-gui");
     hideElement(document.querySelector(".terminal")).then(function(elm) {
-      elm.remove();
+      elm.parentNode.removeChild(elm);
     });
   }
 }
@@ -56,7 +56,7 @@ function projectClickModal(event) {
   event.stopPropagation();
   let modal = document.querySelector("#modal");
   if (modal) {
-    modal.remove();
+    modal.parentNode.removeChild(modal);
   }
   let content = builders.build(
     event.currentTarget.getAttribute("data-type"),

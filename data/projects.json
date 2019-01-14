@@ -1,7 +1,7 @@
 [
   {
     "name": "Rétroception",
-    "description": "<i>Un peu comme Inception, mais en mieux. Avec de meilleurs acteurs surtout. </i><br>Quelqu'un qui se sent un peu mal va tenter de poursuivre son futur, tout en se faisant rattraper par son passé. <br><em>Télérama.fr : 4.8/5 \"Éblouissant\"</em>",
+    "description": "Un peu comme Inception, mais en mieux. Avec de meilleurs acteurs surtout.<br><i>Quelqu'un qui se sent un peu mal va tenter de poursuivre son futur, tout en se faisant rattraper par son passé.</i> <br><em>Télérama.fr : 4.8/5 \"Éblouissant\"</em>",
     "thumb": "./img/projects/retroception.jpg",
     "link": "https://www.youtube.com/watch?v=IODlotDNKFY",
     "yt-code": "IODlotDNKFY",
@@ -16,7 +16,32 @@
     "type": "link",
     "linkInfos": {
       "icon": "./img/icons/git.svg",
-      "title": "Explorer le dépôt"
+      "title": "Explorer le dépôt",
+      "disabled": false
+    }
+  },
+  {
+    "name": "Spicery",
+    "description": "L'épicerie internationale, sur le seuil de votre ordinateur. Découvrez les saveurs de tous les pays du monde, rassemblés sur un site, Spicery.fr.",
+    "thumb": "./img/projects/spicery.jpg",
+    "link": "https://spicery.fr",
+    "type": "link",
+    "linkInfos": {
+      "icon": "./img/icons/wip.svg",
+      "title": "Pas encore en ligne",
+      "disabled": true
+    }
+  },
+  {
+    "name": "Portrait chinois",
+    "description": "Me représenter, c'est compliqué. Mais là, j'avais pas le choix. Alors j'ai fait ce portrait chinois.",
+    "thumb": "./img/projects/portraitc.jpg",
+    "link": "./portraitc/",
+    "type": "link",
+    "linkInfos": {
+      "icon": "./img/icons/generic.svg",
+      "title": "Visiter",
+      "disabled": false
     }
   }
 ]
