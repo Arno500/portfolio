@@ -3,7 +3,7 @@
     "name": "Rétroception",
     "description": "Un peu comme Inception, mais en mieux. Avec de meilleurs acteurs surtout.<br><i>Quelqu'un qui se sent un peu mal va tenter de poursuivre son futur, tout en se faisant rattraper par son passé.</i> <br><em>Télérama.fr : 4.8/5 \"Éblouissant\"</em>",
     "thumb": "./img/projects/retroception.jpg",
-    "link": "https://www.youtube.com/watch?v=IODlotDNKFY",
+    "link": "https://youtu.be/IODlotDNKFY",
     "yt-code": "IODlotDNKFY",
     "type": "youtube",
     "action": "link"
@@ -41,6 +41,39 @@
     "linkInfos": {
       "icon": "./img/icons/generic.svg",
       "title": "Visiter",
+      "disabled": false
+    }
+  },
+  {
+    "name": "CV Interactif",
+    "description": "C'est un CV, c'est interactif, c'est un CV interactif. Je suis le développeur du logiciel Arno DUBOIS 2018.",
+    "thumb": "./img/projects/cv.jpg",
+    "link": "./cv/",
+    "type": "link",
+    "linkInfos": {
+      "icon": "./img/icons/generic.svg",
+      "title": "Voir mon ancien CV",
+      "disabled": false
+    }
+  },
+  {
+    "name": "CV Interactif",
+    "description": "C'est un CV, c'est une vidéo, c'est un CV vidéo (en anglais). Nous passons maintenant à la version 2019 de mon logiciel Arno DUBOIS.",
+    "thumb": "./img/projects/cv-video.jpg",
+    "link": "https://youtu.be/QpEb3pIWf9w",
+    "yt-code": "QpEb3pIWf9w",
+    "type": "youtube",
+    "action": "link"
+  },
+  {
+    "name": "CiVi",
+    "description": "Plateforme de regroupement des CV des étudiants de ma promotion. Algolia, Laravel, SASS, Webpack. Du bon et du pro, c'est Arno & Co !",
+    "thumb": "./img/projects/civi.jpg",
+    "link": "https://civi.arnaux.ninja/",
+    "type": "link",
+    "linkInfos": {
+      "icon": "./img/icons/generic.svg",
+      "title": "Explorer les étudiants<br>de ma promotion !",
       "disabled": false
     }
   }

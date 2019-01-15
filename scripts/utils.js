@@ -1,4 +1,6 @@
 import * as HTMLEncoderDecoder from "html-encoder-decoder";
+import * as ImagePreloader from "image-preloader";
+const projects = require("../data/projects.json");
 
 // Function from David Walsh: http://davidwalsh.name/css-animation-callback
 function whichTransitionEvent() {
@@ -86,6 +88,23 @@ export function encodeToHTML(input) {
   } else {
     return input;
   }
+}
+
+export function imagePreloader() {
+  let thumbs = projects.map(project => project.thumb);
+  let icons = projects.map(project => {
+    if (project.linkInfos) {
+      return project.linkInfos.icon;
+    } else {
+      return null;
+    }
+  });
+
+  let images = Array.prototype.concat(thumbs, icons);
+  let preloader = new ImagePreloader();
+  preloader.preload(images).then(fini => {
+    console.info("Toutes les images sont chargées !");
+  });
 }
 
 /* Sample function that returns boolean in case the browser is Internet Explorer*/

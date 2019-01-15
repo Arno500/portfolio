@@ -1,13 +1,17 @@
 {
   "help": "help",
-  "cd": "notallowed",
-  "rm": "rm",
-  "mail": "mail",
-  "ls": "ls",
   "projets": "projects",
   "formation": "formation",
+  "cv": "cv",
+  "moi": "me",
+  "mail": "mail",
+  "linkedin": "linkedin",
+  "cd": "notallowed",
+  "rm": "rm",
+  "ls": "ls",
   "aliases": {
     "bonjour": "bonjour",
+    "aurevoir": "bye",
     "hello": "bonjour",
     "mohaio": "bonjour",
     "hola": "bonjour",
@@ -17,21 +21,31 @@
     "mailto": "mail",
     "ll": "ls",
     "projet": "projects",
-    "formations": "formation"
+    "formations": "formation",
+    "me": "me",
+    "lnkd": "linkedin"
   },
   "actions": {
     "bonjour": "Cette commande ne vous mènera à rien, mais bonjour quand même 👋",
-    "notallowed": "Permission refusée",
+    "bye": "Au revoir ! J'espère que vous reviendrez vite ! 👋",
+    "notallowed": "Permission refusée ⛔",
     "help": "helpCommand()",
     "rm": "rmCommand()",
     "mail": "mailCommand()",
     "ls": "dist/  index.html  package.json  postcss.config.js scripts.js  styles.scss webpack.config.js cv/ img/  old/  portraitc/  sass/ styles.css  web/",
     "projects": "projectsCommand()",
-    "formation": "DUT MMI (Métiers du multimédia et de l'Internet) :<br><ul><li>Une formation polyvalente en Bac + 2 : développement, graphisme, audiovisuel, communication, marketing, etc...</li><li>Donne l'envie d'apprendre de nouvelles technologies, pour ne jamais freiner la créativité et l'ouverture</li></ul>Baccalauréat Scientifique (Mention Assez Bien) : Faut-il encore le présenter ?"
+    "formation": "DUT MMI (Métiers du multimédia et de l'Internet) :<br><ul><li>Une formation polyvalente en Bac + 2 : développement, graphisme, audiovisuel, communication, marketing, etc...</li><li>Donne l'envie d'apprendre de nouvelles technologies, pour ne jamais freiner la créativité et l'ouverture</li></ul>Baccalauréat Scientifique (Mention Assez Bien) : Faut-il encore le présenter ?",
+    "cv": "Voici mon CV, en PDF : <a href=\"./files/CV (interactif).pdf\" title=\"Lien vers mon CV PDF\">Ceci est mon CV PDF 📄</a>",
+    "me": "Arno avec un O, également appelé Arno, est un développeur Full-Stack qui fait un peu tout. Il est avant tout motivé par la technologie, mais aussi plus globalement par tout ce qui est technique. On peut dire qu'il est polyvalent !<br>Il fait :<ul><li>📷 De l'intégration front (HTML et CSS),</li><li>👨‍💻 Du développement front (JS → Vue.js, jQuery),</li><li>💾 Du développement back (PHP → Laravel, Ruby),</li><li>⌨️ Du devOps (Docker, Linux/Unix, Nginx et Apache, etc...),</li><li>🎬 Un peu de graphisme et d'audiovisuel (Photoshop, Illustrator, InDesign, Premiere Pro, After Effects)</li></ul>",
+    "linkedin": "Voici mon LinkedIn : <a title=\"Lien vers le LinkedIn d'Arno DUBOIS\" href=\"https://www.linkedin.com/in/arno-dubois\">https://www.linkedin.com/in/arno-dubois</a>"
   },
   "helptexts": {
     "cd": "CD : Cette commande permet de changer de dossier. La syntaxe est la suivante : cd [&lt;dossier&gt;]",
     "mail": "MAIL: Cette commande permet de m'envoyer un mail.<br>La syntaxe est la suivante : mail [&lt;sujet personnalisé&gt;]",
-    "rm": "RM: Cette commande permet de supprimer un fichier.<br>La syntaxe est la suivante : rm [&lt;fichier&gt;]"
+    "rm": "RM: Cette commande permet de supprimer un fichier.<br>La syntaxe est la suivante : rm [&lt;fichier&gt;]",
+    "moi": "Tout ce qui me décrit",
+    "formations": "Les formations que j'ai pu suivre",
+    "linkedin": "Le lien vers mon LinkedIn",
+    "cv": "Affiche un lien vers mon CV en PDF"
   }
 }

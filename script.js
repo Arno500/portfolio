@@ -1,7 +1,6 @@
 require("./sass/styles.scss");
 import * as anim from "./scripts/background";
 import * as event from "./scripts/events";
-import * as term from "./scripts/terminal";
 import * as utils from "./scripts/utils";
 import * as smoothscroll from "smoothscroll-polyfill";
 import scrollSnapPolyfill from "css-scroll-snap-polyfill";
@@ -37,4 +36,5 @@ function bootstrap() {
       event.startMode(value, "noscroll");
     }
   });
+  utils.imagePreloader();
 }

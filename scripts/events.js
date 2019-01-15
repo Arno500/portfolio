@@ -1,4 +1,5 @@
 import { startCommandLineMode } from "./terminal";
+import { startUiMode } from "./ui";
 import { hideElement, showElement } from "./utils";
 import * as localforage from "localforage";
 import MicroModal from "micromodal";
@@ -18,6 +19,7 @@ export function startMode(mode, scroll = "") {
   let modeCheckbox = document.querySelector("#mode-switcher");
   hideElement(document.querySelector(".chooser")).then(function() {
     if (mode === "mode-gui") {
+      startUiMode(document.querySelector(".projects"));
       modeCheckbox.checked = true;
       localforage.setItem("mode", "mode-gui");
     } else if (mode === "mode-terminal") {
@@ -37,7 +39,11 @@ function modeChecker(event) {
   if (!switcher.checked) {
     startCommandLineMode(document.querySelector(".projects"));
     localforage.setItem("mode", "mode-terminal");
+    hideElement(document.querySelector(".ui")).then(function(elm) {
+      elm.parentNode.removeChild(elm);
+    });
   } else {
+    startUiMode(document.querySelector(".projects"));
     localforage.setItem("mode", "mode-gui");
     hideElement(document.querySelector(".terminal")).then(function(elm) {
       elm.parentNode.removeChild(elm);
