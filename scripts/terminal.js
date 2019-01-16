@@ -319,7 +319,7 @@ function catCommand(args) {
       outputing(cleanhtml.split("\n"));
     }
     function outputing(previousOutput, preCode) {
-      const numberOfLinesToShow = 10;
+      const numberOfLinesToShow = 6;
       var showing = previousOutput
         .slice(0, numberOfLinesToShow)
         .map(elm => encodeToHTML(elm));
@@ -342,7 +342,7 @@ function catCommand(args) {
       } else {
         setTimeout(function() {
           outputing(remaining, preCode);
-        }, 300);
+        }, 200);
       }
     }
     return { output: "" };
