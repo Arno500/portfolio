@@ -46,6 +46,10 @@
     padding: 1em 1em;
     white-space: nowrap;
 
+    &::-webkit-scrollbar {
+      height: 5px;
+    }
+
     * {
       font-family: $font-family-base;
       color: rgb(37, 37, 37);
@@ -126,19 +130,23 @@
       }
     }
   }
-  &::-webkit-scrollbar {
+  &::-webkit-scrollbar,
+  *::-webkit-scrollbar {
     width: 7px;
   }
 
-  &::-webkit-scrollbar-track {
+  &::-webkit-scrollbar-track,
+  *::-webkit-scrollbar-track {
     background: none;
   }
 
-  &::-webkit-scrollbar-thumb {
+  &::-webkit-scrollbar-thumb,
+  *::-webkit-scrollbar-thumb {
     background: #5d5d5d;
   }
 
-  &::-webkit-scrollbar-thumb:hover {
+  &::-webkit-scrollbar-thumb:hover,
+  *::-webkit-scrollbar-thumb:hover {
     background: #929292;
   }
 }

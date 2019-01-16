@@ -60,7 +60,11 @@ body {
 
   * {
     font-family: "Muli", sans-serif;
-    line-height: 7rem;
+    line-height: 3rem;
+  }
+  h1,
+  h2 {
+    margin: 4rem;
   }
 }
 
@@ -101,6 +105,27 @@ header {
       background-color: #6da6b6;
       opacity: 0.8;
       transition: none;
+    }
+  }
+  &::after {
+    content: "";
+    background: url("../img/icons/calltoscroll.svg") no-repeat;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    height: 65px;
+    width: 65px;
+    filter: invert(62%) sepia(23%) saturate(532%) hue-rotate(146deg)
+      brightness(94%) contrast(92%);
+    animation: upanddown 2s ease-in-out 0s infinite alternate;
+  }
+
+  @keyframes upanddown {
+    from {
+      transform: translate3d(-50%, -30px, 0);
+    }
+    to {
+      transform: translate3d(-50%, -10px, 0);
     }
   }
 }
@@ -164,13 +189,16 @@ header {
 @import "./terminal.scss";
 @import "./modal.scss";
 
+@include respond-to(medium) {
+  .grid-offset {
+    display: none;
+  }
+}
+
 .hidden {
   margin-top: 0 !important;
   margin-bottom: 0 !important;
   height: 0 !important;
   overflow: hidden !important;
   visibility: hidden !important;
-}
-
-@include respond-to(medium) {
 }

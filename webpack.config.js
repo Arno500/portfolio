@@ -31,6 +31,13 @@ const webpackConfig = {
         ]
       },
       {
+        test: /\.svg/,
+        use: {
+          loader: "svg-url-loader",
+          options: {}
+        }
+      },
+      {
         test: /\.js$/,
         loader: "babel-loader",
         options: {

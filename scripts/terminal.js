@@ -282,7 +282,7 @@ function projectsCommand() {
         <img src="${encodeToHTML(project.thumb)}" alt="${encodeToHTML(
       project.name
     )}"></img>
-      </picture
+      </picture>
         <figcaption>
           <h1>${encodeToHTML(project.name)}</h1>
           <p>${truncateText(
