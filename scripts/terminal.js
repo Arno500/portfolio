@@ -267,9 +267,12 @@ function projectsCommand() {
       project.ytCode
     )}" data-link-infos="${encodeToHTML(JSON.stringify(project.linkInfos))}">
       <figure>
+      <picture>
+        <source type="image/webp" srcset="${project.thumbWebp}">
         <img src="${encodeToHTML(project.thumb)}" alt="${encodeToHTML(
       project.name
     )}"></img>
+      </picture
         <figcaption>
           <h1>${encodeToHTML(project.name)}</h1>
           <p>${truncateText(

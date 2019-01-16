@@ -2,7 +2,8 @@
   {
     "name": "Rétroception",
     "description": "Un peu comme Inception, mais en mieux. Avec de meilleurs acteurs surtout.<br><i>Quelqu'un qui se sent un peu mal va tenter de poursuivre son futur, tout en se faisant rattraper par son passé.</i> <br><em>Télérama.fr : 4.8/5 \"Éblouissant\"</em>",
-    "thumb": "./img/projects/retroception.jpg",
+    "thumb": "./img/projects/compr-jpg/retroception.jpg",
+    "thumbWebp": "./img/projects/compr-jpg/retroception.jpg",
     "link": "https://youtu.be/IODlotDNKFY",
     "yt-code": "IODlotDNKFY",
     "type": "youtube",
@@ -11,7 +12,8 @@
   {
     "name": "Feekbad",
     "description": "Vous vous demandez comment intégrer un système de retour là où vous travaillez ? Utilisez Feekbad, la plateforme open-source en Laravel et Vue.JS qui vous propose de distribuer vos votes.",
-    "thumb": "./img/projects/feekbad.jpg",
+    "thumb": "./img/projects/compr-jpg/feekbad.jpg",
+    "thumbWebp": "./img/projects/compr-jpg/feekbad.jpg",
     "link": "https://gitlab.com/Arno500/feekbad",
     "type": "link",
     "linkInfos": {
@@ -23,7 +25,8 @@
   {
     "name": "Spicery",
     "description": "L'épicerie internationale, sur le seuil de votre ordinateur. Découvrez les saveurs de tous les pays du monde, rassemblés sur un site, Spicery.fr.",
-    "thumb": "./img/projects/spicery.jpg",
+    "thumb": "./img/projects/compr-jpg/spicery.jpg",
+    "thumbWebp": "./img/projects/compr-jpg/spicery.jpg",
     "link": "https://spicery.fr",
     "type": "link",
     "linkInfos": {
@@ -35,7 +38,8 @@
   {
     "name": "Portrait chinois",
     "description": "Me représenter, c'est compliqué. Mais là, j'avais pas le choix. Alors j'ai fait ce portrait chinois.",
-    "thumb": "./img/projects/portraitc.jpg",
+    "thumb": "./img/projects/compr-jpg/portraitc.jpg",
+    "thumbWebp": "./img/projects/compr-jpg/portraitc.jpg",
     "link": "./portraitc/",
     "type": "link",
     "linkInfos": {
@@ -47,7 +51,8 @@
   {
     "name": "CV Interactif",
     "description": "C'est un CV, c'est interactif, c'est un CV interactif. Je suis le développeur du logiciel Arno DUBOIS 2018.",
-    "thumb": "./img/projects/cv.jpg",
+    "thumb": "./img/projects/compr-jpg/cv.jpg",
+    "thumbWebp": "./img/projects/compr-jpg/cv.jpg",
     "link": "./cv/",
     "type": "link",
     "linkInfos": {
@@ -59,7 +64,8 @@
   {
     "name": "CV Interactif",
     "description": "C'est un CV, c'est une vidéo, c'est un CV vidéo (en anglais). Nous passons maintenant à la version 2019 de mon logiciel Arno DUBOIS.",
-    "thumb": "./img/projects/cv-video.jpg",
+    "thumb": "./img/projects/compr-jpg/cv-video.jpg",
+    "thumbWebp": "./img/projects/compr-jpg/cv-video.jpg",
     "link": "https://youtu.be/QpEb3pIWf9w",
     "yt-code": "QpEb3pIWf9w",
     "type": "youtube",
@@ -68,7 +74,8 @@
   {
     "name": "CiVi",
     "description": "Plateforme de regroupement des CV des étudiants de ma promotion. Algolia, Laravel, SASS, Webpack. Du bon et du pro, c'est Arno & Co !",
-    "thumb": "./img/projects/civi.jpg",
+    "thumb": "./img/projects/compr-jpg/civi.jpg",
+    "thumbWebp": "./img/projects/compr-jpg/civi.jpg",
     "link": "https://civi.arnaux.ninja/",
     "type": "link",
     "linkInfos": {
