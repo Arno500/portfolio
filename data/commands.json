@@ -9,6 +9,10 @@
   "cd": "notallowed",
   "rm": "rm",
   "ls": "ls",
+  "whoami": "whoami",
+  "pwd": "pwd",
+  "cat": "cat",
+  "exit": "exit",
   "aliases": {
     "bonjour": "bonjour",
     "aurevoir": "bye",
@@ -39,7 +43,11 @@
     "cv": "Voici mon CV, en PDF : <a href=\"./files/CV (interactif).pdf\" title=\"Lien vers mon CV PDF\">Ceci est mon CV PDF 📄</a>",
     "me": "Arno avec un O, également appelé Arno, est un développeur Full-Stack qui fait un peu tout. Il est avant tout motivé par la technologie, mais aussi plus globalement par tout ce qui est technique. On peut dire qu'il est polyvalent !<br>Il fait :<ul><li>📷 De l'intégration front (HTML et CSS),</li><li>👨‍💻 Du développement front (JS → Vue.js, jQuery),</li><li>💾 Du développement back (PHP → Laravel, Ruby),</li><li>⌨️ Du devOps (Docker, Linux/Unix, Nginx et Apache, etc...),</li><li>🎬 Un peu de graphisme et d'audiovisuel (Photoshop, Illustrator, InDesign, Premiere Pro, After Effects)</li></ul>",
     "linkedin": "Voici mon LinkedIn : <a title=\"Lien vers le LinkedIn d'Arno DUBOIS\" href=\"https://www.linkedin.com/in/arno-dubois\">https://www.linkedin.com/in/arno-dubois</a>",
-    "sudo": "www-data is not in the sudoers file. This will be reported."
+    "sudo": "www-data is not in the sudoers file. This will be reported.",
+    "whoami": "www-data",
+    "pwd": "/srv/http/arno/",
+    "cat": "catCommand()",
+    "exit": "exitCommand()"
   },
   "helptexts": {
     "cd": "CD : Cette commande permet de changer de dossier. La syntaxe est la suivante : cd [&lt;dossier&gt;]",
@@ -49,6 +57,10 @@
     "formations": "Les formations que j'ai pu suivre",
     "linkedin": "Le lien vers mon LinkedIn",
     "cv": "Affiche un lien vers mon CV en PDF",
-    "sudo": "SUDO : Permet de lancer une commande en tant que root."
+    "sudo": "SUDO : Permet de lancer une commande en tant que root.",
+    "ls": "LS : Liste les fichiers du répertoire courant",
+    "whoami": "WHOAMI : Affiche l'utilisateur courant",
+    "pwd": "PWD : Affiche le répertoire courant",
+    "cat": "CAT : Affiche le contenu du fichier. La syntaxe est la suivante : cat [&lt;fichier&gt;]"
   }
 }

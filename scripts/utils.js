@@ -120,3 +120,8 @@ export function isIEorEdge() {
     return false;
   }
 }
+
+export function switchSwitcher(checked) {
+  let switcher = document.querySelector(".switch");
+  switcher.checked = checked;
+}

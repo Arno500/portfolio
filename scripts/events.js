@@ -34,15 +34,22 @@ export function startMode(mode, scroll = "") {
 function modeChecker(event) {
   let switcher = event.currentTarget;
 
-  console.info("Changing mode");
-
   if (!switcher.checked) {
+    switchMode("mode-terminal");
+  } else {
+    switchMode("mode-gui");
+  }
+  console.info("Changing mode");
+}
+
+export function switchMode(mode) {
+  if (mode === "mode-terminal") {
     startCommandLineMode(document.querySelector(".projects"));
     localforage.setItem("mode", "mode-terminal");
     hideElement(document.querySelector(".ui")).then(function(elm) {
       elm.parentNode.removeChild(elm);
     });
-  } else {
+  } else if (mode === "mode-gui") {
     startUiMode(document.querySelector(".projects"));
     localforage.setItem("mode", "mode-gui");
     hideElement(document.querySelector(".terminal")).then(function(elm) {

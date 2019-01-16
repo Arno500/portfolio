@@ -4,15 +4,18 @@ import {
   truncateText,
   setCaretPosition,
   stripHTML,
-  encodeToHTML
+  encodeToHTML,
+  switchSwitcher
 } from "./utils";
 import * as localforage from "localforage";
-import { projectClickHandler } from "./events";
+import { projectClickHandler, switchMode } from "./events";
+import { resolve } from "url";
 
 const availableCommands = require("../data/commands.json");
 const projects = require("../data/projects.json");
 var pressed = false;
 var resuming = false;
+var finished = true;
 var commandHistory = [""];
 var currentCommand = 0;
 
@@ -73,7 +76,7 @@ function buildTerminal(
     //terminal.insertAdjacentHTML("beforeend", oldContent);
     resuming = true;
     oldContent.forEach(command => {
-      commandInterpreter(command);
+      commandInterpreter(command, true);
     });
     resuming = false;
   }
@@ -131,7 +134,7 @@ function keyManager(event) {
   }
 }
 
-function commandInterpreter(command) {
+function commandInterpreter(command, nohistory = false) {
   let terminal = document.querySelector(".terminal");
   transformInput(terminal, command);
 
@@ -172,17 +175,22 @@ function commandInterpreter(command) {
     }
   });
 
-  localforage.setItem("commandHistory", JSON.stringify(cleanCommandHistory));
+  if (nohistory === false) {
+    localforage.setItem("commandHistory", JSON.stringify(cleanCommandHistory));
+  }
   /* localforage.setItem(
     "terminalContent",
     document.querySelector(".terminal").innerHTML
   ); */
-  askForCommand(terminal);
+  if (finished === true) {
+    askForCommand(terminal);
+  }
 }
 
 function print(content) {
   let terminal = document.querySelector(".terminal");
   terminal.insertAdjacentHTML("beforeend", content);
+  terminal.scrollTop = terminal.scrollHeight;
 }
 
 function transformInput(terminal, command) {
@@ -190,8 +198,10 @@ function transformInput(terminal, command) {
   let input = terminal.querySelector(".command-input");
   let inputContainer = terminal.querySelector(".flex-input");
 
-  inputContainer.textContent = intro.textContent + " " + command;
-  inputContainer.classList.remove("flex-input");
+  if (inputContainer) {
+    inputContainer.textContent = intro.textContent + " " + command;
+    inputContainer.classList.remove("flex-input");
+  }
 }
 
 function helpCommand(args) {
@@ -288,4 +298,62 @@ function projectsCommand() {
     output,
     after: projectClickHandler
   };
+}
+
+function catCommand(args) {
+  if (args[0] === "index.html") {
+    finished = false;
+    var html = document.documentElement.innerHTML;
+    var cleanhtml = html.replace(
+      /((<div class="dot).*(><\/div>)+)|(<pre>.*<\/pre>)/gm,
+      ""
+    );
+    if (resuming) {
+      let oneblockarray = cleanhtml
+        .split("\n")
+        .map(elm => encodeToHTML(elm))
+        .join("<br>");
+      finished = true;
+      return { output: "<pre>" + oneblockarray + "</pre>" };
+    } else {
+      outputing(cleanhtml.split("\n"));
+    }
+    function outputing(previousOutput, preCode) {
+      const numberOfLinesToShow = 10;
+      var showing = previousOutput
+        .slice(0, numberOfLinesToShow)
+        .map(elm => encodeToHTML(elm));
+      var remaining = previousOutput;
+      previousOutput.splice(0, numberOfLinesToShow);
+      var terminal = document.querySelector(".terminal");
+      if (!preCode) {
+        var preCode = document.createElement("pre");
+        preCode.classList.add("pre-current");
+        terminal.insertAdjacentElement("beforeend", preCode);
+      }
+      preCode.insertAdjacentHTML("beforeend", showing.join("<br>"));
+      terminal.scrollTop = terminal.scrollHeight;
+
+      if (showing.length < numberOfLinesToShow) {
+        finished = true;
+        print("</pre>");
+        askForCommand(document.querySelector(".terminal"));
+        return;
+      } else {
+        setTimeout(function() {
+          outputing(remaining, preCode);
+        }, 300);
+      }
+    }
+    return { output: "" };
+  }
+}
+
+function exitCommand(args) {
+  if (!resuming) {
+    switchMode("mode-gui");
+    switchSwitcher(true);
+    commandHistory.splice(-1, 1);
+  }
+  return { output: "" };
 }

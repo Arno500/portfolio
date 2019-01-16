@@ -1,10 +1,12 @@
 .terminal {
   width: 100%;
+  padding: 0 7px 0 5px;
   height: 70vh;
   cursor: text;
   overflow-y: scroll;
   transition: all 0.5s;
   font-family: "Fira Mono", Courier New, Courier, monospace;
+  word-break: break-all;
 
   * {
     color: white;
