@@ -28,7 +28,9 @@
     "formations": "formation",
     "me": "me",
     "lnkd": "linkedin",
-    "sudo": "sudo"
+    "sudo": "sudo",
+    "caca": "caca",
+    "poop": "caca"
   },
   "actions": {
     "bonjour": "Cette commande ne vous mènera à rien, mais bonjour quand même 👋",
@@ -47,7 +49,8 @@
     "whoami": "www-data",
     "pwd": "/srv/http/arno/",
     "cat": "catCommand()",
-    "exit": "exitCommand()"
+    "exit": "exitCommand()",
+    "caca": "💩"
   },
   "helptexts": {
     "cd": "CD : Cette commande permet de changer de dossier. La syntaxe est la suivante : cd [&lt;dossier&gt;]",

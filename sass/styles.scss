@@ -1,6 +1,7 @@
 @import "_config/variables";
 @import "_config/mixins";
 @import "~knacss/sass/knacss";
+/* uncss:ignore start */
 @import "./utils";
 
 :root {
@@ -202,3 +203,4 @@ header {
   overflow: hidden !important;
   visibility: hidden !important;
 }
+/* uncss:ignore end */

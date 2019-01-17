@@ -156,8 +156,10 @@ function commandInterpreter(command, nohistory = false) {
           commandArguments +
           '"])'
       );
-      print(functionResult.output);
-      if (typeof functionResult.after === "function") {
+      if (functionResult && functionResult.output) {
+        print(functionResult.output);
+      }
+      if (functionResult && typeof functionResult.after === "function") {
         functionResult.after();
       }
     } else {
@@ -338,7 +340,7 @@ function catCommand(args) {
         finished = true;
         print("</pre>");
         askForCommand(document.querySelector(".terminal"));
-        return;
+        return { output: "" };
       } else {
         setTimeout(function() {
           outputing(remaining, preCode);
