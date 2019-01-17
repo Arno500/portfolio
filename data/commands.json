@@ -30,7 +30,11 @@
     "lnkd": "linkedin",
     "sudo": "sudo",
     "caca": "caca",
-    "poop": "caca"
+    "poop": "caca",
+    "cul": "cul",
+    "ass": "cul",
+    "pamplegooze": "pamplegooze",
+    "pamplemousse": "pamplegooze"
   },
   "actions": {
     "bonjour": "Cette commande ne vous mènera à rien, mais bonjour quand même 👋",
@@ -50,7 +54,9 @@
     "pwd": "/srv/http/arno/",
     "cat": "catCommand()",
     "exit": "exitCommand()",
-    "caca": "💩"
+    "caca": "💩",
+    "cul": "🍑",
+    "pamplegooze": "<iframe width=\"100%\" height=\"300\" scrolling=\"no\" frameborder=\"no\" allow=\"autoplay\" src=\"https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/272784740&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true\"></iframe>"
   },
   "helptexts": {
     "cd": "CD : Cette commande permet de changer de dossier. La syntaxe est la suivante : cd [&lt;dossier&gt;]",

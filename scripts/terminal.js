@@ -236,6 +236,8 @@ function rmCommand(args) {
       "--i-know-what-i-am-doing-right-now-on-a-website-that-is-not-mine"
   ) {
     return { output: "Ah là là, vous faites vraiment tout ce qu'on vous dit" };
+  } else if (args && args[0]) {
+    return { output: "Permission refusée." };
   } else {
     return {
       output:

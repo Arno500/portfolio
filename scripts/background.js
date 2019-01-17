@@ -1,3 +1,5 @@
+import { throttle } from "lodash-es";
+
 export function animateBackground() {
   function rand(min, max) {
     let result = Math.floor(Math.random() * (max - min + 1)) + min;
@@ -20,26 +22,28 @@ export function animateBackground() {
 
   var points = document.querySelectorAll(".dot");
 
-  var screenWidth = Math.max(
-      document.documentElement.clientWidth,
-      window.innerWidth || 0
-    ),
-    screenHeight = Math.max(
-      document.documentElement.clientHeight,
-      window.innerHeight || 0
-    );
-
-  var translateZMin = -400,
-    translateZMax = 325;
-
-  var containerAnimationMap = { perspective: [215, 50], opacity: [0.9, 0.55] };
-
-  animatedBackground.style["perspective-origin"] =
-    screenWidth / 2 + "px " + screenHeight * 0.45 + "px";
-
   animeSequence();
 
   function animeSequence() {
+    var screenWidth = Math.max(
+        document.documentElement.clientWidth,
+        window.innerWidth || 0
+      ),
+      screenHeight = Math.max(
+        document.documentElement.clientHeight,
+        window.innerHeight || 0
+      );
+
+    var translateZMin = -400,
+      translateZMax = 325;
+
+    var containerAnimationMap = {
+      perspective: [215, 50],
+      opacity: [0.9, 0.55]
+    };
+
+    animatedBackground.style["perspective-origin"] =
+      screenWidth / 2 + "px " + screenHeight * 0.45 + "px";
     points
       .velocity(
         {
@@ -102,6 +106,61 @@ export function animateBackground() {
       delay: 12500
     });
   }
-  //Velocity.RunSequence(setup);
-  //console.dir(Velocity);
+
+  /* Feature detection */
+  var passiveIfSupported = false;
+
+  try {
+    window.addEventListener(
+      "test",
+      null,
+      Object.defineProperty({}, "passive", {
+        get: function() {
+          passiveIfSupported = { passive: true };
+        }
+      })
+    );
+  } catch (err) {}
+
+  document
+    .querySelector(".topsection")
+    .addEventListener(
+      "mousemove",
+      throttle(parallaxPerspective, 1 / 20),
+      passiveIfSupported
+    );
+  document
+    .querySelector(".topsection")
+    .addEventListener(
+      "touchmove",
+      throttle(parallaxPerspective, 1 / 20),
+      passiveIfSupported
+    );
+
+  window.onresize = function() {
+    points.velocity("stop");
+    Velocity(animatedBackground, "stop");
+    animeSequence();
+  };
+}
+
+function parallaxPerspective(event) {
+  const screenWidth = Math.max(
+      document.documentElement.clientWidth,
+      window.innerWidth || 0
+    ),
+    screenHeight = Math.max(
+      document.documentElement.clientHeight,
+      window.innerHeight || 0
+    );
+  console.log(screenHeight, screenWidth);
+  const reductionCoeffX = 3,
+    reductionCoeffY = 3;
+  document.querySelector(".animatedbackground").style["perspective-origin"] =
+    screenWidth / 2 +
+    (screenWidth / 2 - (screenWidth - event.pageX)) / reductionCoeffX +
+    "px " +
+    (screenHeight * 0.45 +
+      (screenHeight * 0.55 - (screenHeight - event.pageY)) / reductionCoeffY) +
+    "px";
 }
