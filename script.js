@@ -32,6 +32,8 @@ function bootstrap() {
     anim.animateBackground();
   }
   utils.imagePreloader();
+  let gui = document.querySelector(".gui");
+  gui.parentElement.removeChild(gui);
   localforage.getItem("mode").then(value => {
     if (value && value !== "") {
       event.startMode(value, "noscroll");
