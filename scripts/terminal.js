@@ -284,7 +284,7 @@ function projectsCommand() {
     )}"></img>
       </picture>
         <figcaption>
-          <h1>${encodeToHTML(project.name)}</h1>
+          <h3>${encodeToHTML(project.name)}</h3>
           <p>${truncateText(
             stripHTML(project.description.replace('"', "\u0022")),
             17
