@@ -7,6 +7,7 @@
   transition: all 0.5s;
   font-family: "Fira Mono", Courier New, Courier, monospace;
   word-break: break-all;
+  font-size: 1.6rem;
 
   * {
     color: white;
@@ -25,7 +26,7 @@
     align-items: stretch;
     .command-input {
       border: 0;
-      flex: 1 0 auto;
+      flex: 1;
       align-self: auto;
       background-color: transparent;
       border: none;
@@ -108,14 +109,14 @@
       }
     }
     @include respond-to(large) {
-      height: 40vh;
+      height: 48vh;
 
       & > div {
         width: 25vw;
       }
     }
     @include respond-to(medium) {
-      height: 50vh;
+      //height: 50vh;
 
       & > div {
         width: 50vw;
@@ -124,7 +125,7 @@
       }
     }
     @include respond-to(small) {
-      height: 50vh;
+      height: 44vh;
 
       & > div {
         width: 90vw;
@@ -149,5 +150,9 @@
   &::-webkit-scrollbar-thumb:hover,
   *::-webkit-scrollbar-thumb:hover {
     background: #929292;
+  }
+
+  @include respond-to(medium) {
+    font-size: 1.4rem;
   }
 }

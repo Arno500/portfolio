@@ -153,14 +153,22 @@ function parallaxPerspective(event) {
       document.documentElement.clientHeight,
       window.innerHeight || 0
     );
-  console.log(screenHeight, screenWidth);
   const reductionCoeffX = 3,
-    reductionCoeffY = 3;
+    reductionCoeffY = 3,
+    lastTouch = event.touches ? event.touches.length : 0,
+    pointX =
+      typeof event.pageX !== undefined
+        ? event.pageX
+        : event.touches[lastTouch - 1].pageX,
+    pointY =
+      typeof event.pageY !== undefined
+        ? event.pageY
+        : event.touches[lastTouch - 1].pageY;
   document.querySelector(".animatedbackground").style["perspective-origin"] =
     screenWidth / 2 +
-    (screenWidth / 2 - (screenWidth - event.pageX)) / reductionCoeffX +
+    (screenWidth / 2 - (screenWidth - pointX)) / reductionCoeffX +
     "px " +
     (screenHeight * 0.45 +
-      (screenHeight * 0.55 - (screenHeight - event.pageY)) / reductionCoeffY) +
+      (screenHeight * 0.55 - (screenHeight - pointY)) / reductionCoeffY) +
     "px";
 }

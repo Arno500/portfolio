@@ -110,6 +110,7 @@ function askForCommand(terminal) {
 }
 
 function keyManager(event) {
+  event.preventDefault();
   let input = document.querySelector(".command-input");
   if (event.key === "Enter" && !pressed) {
     pressed = true;

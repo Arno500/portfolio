@@ -26,6 +26,7 @@ html {
 body {
   margin: 0;
   background-color: #1f1f22;
+  font-size: 1.2rem;
 }
 
 [class*="grid-6"] {
@@ -38,50 +39,6 @@ body {
   width: 100%;
   position: relative;
 
-  &-center {
-    position: absolute;
-    width: 100%;
-    text-align: center;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    ::before {
-      background-color: #141414;
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      display: block;
-      opacity: 0.7;
-      z-index: -5;
-    }
-  }
-
-  * {
-    font-family: "Muli", sans-serif;
-    line-height: 3rem;
-  }
-  h1,
-  h2 {
-    margin: 4rem;
-  }
-}
-
-main {
-  *:not(.dot) {
-    color: #f1f1f1;
-  }
-}
-
-header {
-  * {
-    color: $color-primary;
-  }
-}
-
-header {
   .animatedbackground {
     // background: -webkit-linear-gradient(
     //   top,
@@ -129,6 +86,51 @@ header {
       transform: translate3d(-50%, -10px, 0);
     }
   }
+
+  &-center {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    ::before {
+      background-color: #141414;
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+      opacity: 0.7;
+      z-index: -5;
+    }
+  }
+
+  * {
+    font-family: "Muli", sans-serif;
+    line-height: 3rem;
+  }
+  h1,
+  h2 {
+    margin: 4rem;
+  }
+}
+
+main {
+  *:not(.dot) {
+    color: #f1f1f1;
+  }
+}
+
+header {
+  * {
+    color: $color-primary;
+  }
+}
+
+.topsection {
 }
 
 .projects {
@@ -167,6 +169,7 @@ header {
       color: #1b2957;
       border-radius: 3px;
       transition: var(--transitions), all 0.25s;
+      font-size: 1.5rem;
       &:hover {
         background-color: #e0f8ff;
         box-shadow: 0px 1px 2px 5px #4f4f4f;
