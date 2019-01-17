@@ -25,7 +25,7 @@ function stopKeyDown(event) {
 }
 
 export function startCommandLineMode(container, scroll = "") {
-  let terminal = document.createElement("div");
+  let terminal = document.createElement("section");
   terminal.className = "terminal hidden";
   container.insertAdjacentElement("beforeend", terminal);
 
@@ -110,7 +110,7 @@ function askForCommand(terminal) {
 }
 
 function keyManager(event) {
-  event.preventDefault();
+  //event.preventDefault();
   let input = document.querySelector(".command-input");
   if (event.key === "Enter" && !pressed) {
     pressed = true;

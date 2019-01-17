@@ -64,44 +64,41 @@
 
       <div class="animatedbackground"></div>
     </header>
-    <main>
-      <section class="about center hidden"></section>
-      <section class="projects center">
-        <div class="mode-toggler hidden">
-          <div>
-            <label for="mode-switcher" class="label">Mode terminal</label>
-            <input
-              type="checkbox"
-              class="switch"
-              name="mode-switcher"
-              id="mode-switcher"
-            />
-            <label for="mode-switcher" class="label">Mode graphique</label>
-          </div>
+    <main class="content-container center">
+      <div class="mode-toggler hidden">
+        <div>
+          <label for="mode-switcher" class="label">Mode terminal</label>
+          <input
+            type="checkbox"
+            class="switch"
+            name="mode-switcher"
+            id="mode-switcher"
+          />
+          <label for="mode-switcher" class="label">Mode graphique</label>
         </div>
-        <div class="chooser grid-4-small-2">
-          <div class="grid-offset"></div>
-          <div class="col-1">
-            <button
-              class="btn center mode-chooser mode-terminal"
-              title="Démarrer le mode terminal (non recommandé pour les malvoyants)"
-            >
-              <img src="img/icons/termmode.svg" alt="" /> Mode terminal
-            </button>
-          </div>
+      </div>
+      <div class="chooser grid-4-small-2">
+        <div class="grid-offset"></div>
+        <div class="col-1">
+          <button
+            class="btn center mode-chooser mode-terminal"
+            title="Démarrer le mode terminal (non recommandé pour les malvoyants)"
+          >
+            <img src="img/icons/termmode.svg" alt="" /> Mode terminal
+          </button>
+        </div>
 
-          <div class="col-1">
-            <button
-              class="btn center mode-chooser mode-gui"
-              title="Démarrer le mode graphique"
-            >
-              <img src="img/icons/guimode.svg" alt="" /> Mode graphique
-            </button>
-          </div>
-          <div class="grid-offset"></div>
+        <div class="col-1">
+          <button
+            class="btn center mode-chooser mode-gui"
+            title="Démarrer le mode graphique"
+          >
+            <img src="img/icons/guimode.svg" alt="" /> Mode graphique
+          </button>
         </div>
-      </section>
-      <section class="contact center hidden"></section>
+        <div class="grid-offset"></div>
+      </div>
+      <div class="component-container"></div>
     </main>
     <!-- Quantcast Choice. Consent Manager Tag -->
     <script type="text/javascript" async="true">

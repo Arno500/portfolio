@@ -44,12 +44,18 @@ export function showElement(element) {
       }
     });
     element.classList.remove("hidden");
+    if (element.classList.contains("hidden-noanim")) {
+      element.classList.remove("hidden-noanim");
+      resolve(element);
+    }
   });
 }
 
 export function scrollToElm(element, focusElm) {
   element.scrollIntoView({
-    behavior: "smooth"
+    behavior: "smooth",
+    block: "center",
+    inline: "nearest"
   });
   (focusElm ? focusElm : element).focus({ preventScroll: true });
 }

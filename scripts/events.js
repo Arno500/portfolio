@@ -15,11 +15,11 @@ export function addChooserListener() {
 }
 
 export function startMode(mode, scroll = "") {
-  let projectsContainer = document.querySelector(".projects");
+  var projectsContainer = document.querySelector(".component-container");
   let modeCheckbox = document.querySelector("#mode-switcher");
   hideElement(document.querySelector(".chooser")).then(function() {
     if (mode === "mode-gui") {
-      startUiMode(document.querySelector(".projects"));
+      startUiMode(projectsContainer, scroll);
       modeCheckbox.checked = true;
       localforage.setItem("mode", "mode-gui");
     } else if (mode === "mode-terminal") {
@@ -44,16 +44,16 @@ function modeChecker(event) {
 
 export function switchMode(mode) {
   if (mode === "mode-terminal") {
-    startCommandLineMode(document.querySelector(".projects"));
     localforage.setItem("mode", "mode-terminal");
-    hideElement(document.querySelector(".ui")).then(function(elm) {
+    hideElement(document.querySelector(".gui")).then(function(elm) {
       elm.parentNode.removeChild(elm);
+      startCommandLineMode(document.querySelector(".component-container"));
     });
   } else if (mode === "mode-gui") {
-    startUiMode(document.querySelector(".projects"));
     localforage.setItem("mode", "mode-gui");
     hideElement(document.querySelector(".terminal")).then(function(elm) {
       elm.parentNode.removeChild(elm);
+      startUiMode(document.querySelector(".component-container"));
     });
   }
 }

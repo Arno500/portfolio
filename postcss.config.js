@@ -16,7 +16,8 @@ module.exports = {
         "div",
         "body",
         "html",
-        "*"
+        "*",
+        /(.grid).*/gm
       ]
     },
     cssnano: {}

@@ -31,10 +31,10 @@ function bootstrap() {
     require("velocity-animate/velocity.ui.js");
     anim.animateBackground();
   }
+  utils.imagePreloader();
   localforage.getItem("mode").then(value => {
     if (value && value !== "") {
       event.startMode(value, "noscroll");
     }
   });
-  utils.imagePreloader();
 }

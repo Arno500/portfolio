@@ -2,6 +2,8 @@
 @import "_config/mixins";
 @import "~knacss/sass/knacss";
 /* uncss:ignore start */
+/* purifycss:ignore start */
+
 @import "./utils";
 
 :root {
@@ -117,28 +119,21 @@ body {
     margin: 4rem;
   }
 }
-
-main {
-  *:not(.dot) {
-    color: #f1f1f1;
-  }
-}
-
 header {
   * {
     color: $color-primary;
   }
 }
 
-.topsection {
-}
-
-.projects {
+main {
+  *:not(.dot) {
+    color: #f1f1f1;
+  }
   .mode-toggler {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 1em auto;
+    margin: 2em auto;
     height: 1em;
     transition: height 0.5s, margin 0.5s;
     .switch {
@@ -162,6 +157,7 @@ header {
     align-items: center;
     height: 10em;
     transition: all 0.5s;
+    margin: 2em 0;
     .mode-chooser {
       height: 8em;
       width: 100%;
@@ -191,6 +187,7 @@ header {
 }
 
 @import "./terminal.scss";
+@import "./gui.scss";
 @import "./modal.scss";
 
 @include respond-to(medium) {
@@ -206,4 +203,14 @@ header {
   overflow: hidden !important;
   visibility: hidden !important;
 }
+
+.hidden-noanim {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  height: 0 !important;
+  overflow: hidden !important;
+  visibility: hidden !important;
+  transition: none !important;
+}
 /* uncss:ignore end */
+/* purifycss:ignore end */
