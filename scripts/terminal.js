@@ -145,13 +145,19 @@ function commandInterpreter(command, nohistory = false) {
   commandHistory.push(command);
   currentCommand++;
 
-  if (!resuming) {
-    _paq.push(["trackEvent", "Commande", extractedCommand]);
-  }
-
   let action =
     availableCommands[extractedCommand] ||
     availableCommands.aliases[extractedCommand];
+
+  if (!resuming) {
+    _paq.push([
+      "trackEvent",
+      "Commande",
+      extractedCommand,
+      "",
+      action ? 1 : false
+    ]);
+  }
 
   if (action) {
     if (availableCommands.actions[action].slice(-2) === "()") {
