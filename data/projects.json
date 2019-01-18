@@ -5,7 +5,7 @@
     "thumb": "./img/projects/compr-jpg/retroception.jpg",
     "thumbWebp": "./img/projects/compr-webp/retroception.webp",
     "link": "https://youtu.be/IODlotDNKFY",
-    "yt-code": "IODlotDNKFY",
+    "ytCode": "IODlotDNKFY",
     "type": "youtube",
     "action": "link"
   },
@@ -67,7 +67,7 @@
     "thumb": "./img/projects/compr-jpg/cv-video.jpg",
     "thumbWebp": "./img/projects/compr-webp/cv-video.webp",
     "link": "https://youtu.be/QpEb3pIWf9w",
-    "yt-code": "QpEb3pIWf9w",
+    "ytCode": "QpEb3pIWf9w",
     "type": "youtube",
     "action": "link"
   },
