@@ -33,6 +33,8 @@
       /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
       _paq.push(["trackPageView"]);
       _paq.push(["enableLinkTracking"]);
+      _paq.push(['enableHeartBeatTimer', 15]);
+
       (function() {
         var u = "https://matomo.arnodubo.is/";
         _paq.push(["setTrackerUrl", u + "piwik.php"]);

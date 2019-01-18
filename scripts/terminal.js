@@ -145,6 +145,10 @@ function commandInterpreter(command, nohistory = false) {
   commandHistory.push(command);
   currentCommand++;
 
+  if (!resuming) {
+    _paq.push(["trackEvent", "Commande", extractedCommand]);
+  }
+
   let action =
     availableCommands[extractedCommand] ||
     availableCommands.aliases[extractedCommand];
@@ -310,7 +314,7 @@ function catCommand(args) {
     finished = false;
     var html = document.documentElement.innerHTML;
     var cleanhtml = html.replace(
-      /((<div class="dot).*(><\/div>)+)|(<pre>.*<\/pre>)/gm,
+      /((<div class="dot).*(><\/div>)+)|(<pre>.*<\/pre>)|((<a).*(qc-cmp-persistent-link).*(<\/a>))/gm,
       ""
     );
     if (resuming) {

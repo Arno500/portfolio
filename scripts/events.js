@@ -19,10 +19,12 @@ export function startMode(mode, scroll = "") {
   let modeCheckbox = document.querySelector("#mode-switcher");
   hideElement(document.querySelector(".chooser")).then(function() {
     if (mode === "mode-gui") {
+      _paq.push(["trackEvent", "Mode", "Graphique"]);
       startUiMode(projectsContainer, scroll);
       modeCheckbox.checked = true;
       localforage.setItem("mode", "mode-gui");
     } else if (mode === "mode-terminal") {
+      _paq.push(["trackEvent", "Mode", "Terminal"]);
       startCommandLineMode(projectsContainer, scroll);
       localforage.setItem("mode", "mode-terminal");
     }
