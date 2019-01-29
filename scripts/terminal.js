@@ -361,6 +361,10 @@ function catCommand(args) {
       }
     }
     return { output: "" };
+  } else if (args && args[0]) {
+    return { output: "Permission refusée ⛔" };
+  } else {
+    return { output: "^C~" };
   }
 }
 

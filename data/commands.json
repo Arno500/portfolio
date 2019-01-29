@@ -51,7 +51,7 @@
     "me": "Arno avec un O, également appelé Arno, est un développeur Full-Stack qui fait un peu tout. Il est avant tout motivé par la technologie, mais aussi plus globalement par tout ce qui est technique. On peut dire qu'il est polyvalent !<br>Il fait :<ul><li>📷 De l'intégration front (HTML et CSS),</li><li>👨‍💻 Du développement front (JS → Vue.js, jQuery),</li><li>💾 Du développement back (PHP → Laravel, Ruby),</li><li>⌨️ Du devOps (Docker, Linux/Unix, Nginx et Apache, etc...),</li><li>🎬 Un peu de graphisme et d'audiovisuel (Photoshop, Illustrator, InDesign, Premiere Pro, After Effects)</li></ul>",
     "linkedin": "Voici mon LinkedIn : <a title=\"Lien vers le LinkedIn d'Arno DUBOIS\" target=\"_blank\" href=\"https://www.linkedin.com/in/arno-dubois\">https://www.linkedin.com/in/arno-dubois</a>",
     "sudo": "www-data is not in the sudoers file. This will be reported.",
-    "whoami": "www-data",
+    "whoami": "www-data (Pour en apprendre plus sur moi, tapez \"moi\")",
     "pwd": "/srv/http/arno/",
     "cat": "catCommand()",
     "exit": "exitCommand()",
