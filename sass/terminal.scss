@@ -79,6 +79,10 @@
 
       &:hover > figure > picture {
         filter: brightness(70%);
+
+        img {
+          filter: brightness(70%);
+        }
       }
 
       * {
