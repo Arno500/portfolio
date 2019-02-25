@@ -1,5 +1,18 @@
 [
   {
+    "name": "TogeNico",
+    "description": "Contraction de Together (venant de PlexTogether, ancien nom de SyncLounge, un outil qui permet de lire de manière synchronisé un contenu d'un serveur Plex) et Nico Nico Douga (un service de streaming vidéo similaire à YouTube, mais Japonais). Ce service, basé sur NodeJS, Socket.io, et Vue en front permet de créer une salle sur laquelle tout le monde se connecte, et où le propriétaire contrôle la lecture pour synchroniser tout le monde. Ensuite, chacun peut chatter, et ces messages apparaissent directement sur la vidéo.",
+    "thumb": "./img/projects/compr-jpg/togenico.jpg",
+    "thumbWebp": "./img/projects/compr-webp/togenico.webp",
+    "link": "https://togenico.arnodubo.is",
+    "type": "link",
+    "linkInfos": {
+      "icon": "./img/icons/movie.svg",
+      "title": "Expérimenter",
+      "disabled": false
+    }
+  },
+  {
     "name": "Rétroception",
     "description": "Un peu comme Inception, mais en mieux. Avec de meilleurs acteurs surtout.<br><i>Quelqu'un qui se sent un peu mal va tenter de poursuivre son futur, tout en se faisant rattraper par son passé.</i> <br><em>Télérama.fr : 4.8/5 \"Éblouissant\"</em>",
     "thumb": "./img/projects/compr-jpg/retroception.jpg",
@@ -31,7 +44,7 @@
     "type": "link",
     "linkInfos": {
       "icon": "./img/icons/wip.svg",
-      "title": "Pas encore en ligne",
+      "title": "En ligne mais pas fini (du tout)",
       "disabled": true
     }
   },
