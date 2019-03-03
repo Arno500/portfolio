@@ -75,13 +75,9 @@
 
       &:hover {
         background-color: $color-button-hover;
-      }
-
-      &:hover > figure > picture {
-        filter: brightness(70%);
 
         img {
-          filter: brightness(70%);
+          filter: brightness(0.8);
         }
       }
 
@@ -92,7 +88,6 @@
       figure {
         margin-bottom: 0;
         height: 100%;
-        picture,
         img {
           border-top-left-radius: 5px;
           border-top-right-radius: 5px;

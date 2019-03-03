@@ -54,7 +54,7 @@ export function showElement(element) {
 export function scrollToElm(element, focusElm) {
   element.scrollIntoView({
     behavior: "smooth",
-    block: "center",
+    block: "nearest",
     inline: "nearest"
   });
   (focusElm ? focusElm : element).focus({ preventScroll: true });

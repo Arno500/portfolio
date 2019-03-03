@@ -1,6 +1,6 @@
-@import "_config/variables";
-@import "_config/mixins";
 @import "~knacss/sass/knacss";
+@import "_config/mixins";
+@import "_config/variables";
 /* uncss:ignore start */
 /* purifycss:ignore start */
 
@@ -184,6 +184,10 @@ main {
       margin: auto;
     }
   }
+}
+
+.switch:checked {
+  box-shadow: inset 2rem 0 0 $color-brand, inset 0 0 0 1px $color-brand;
 }
 
 @import "./terminal.scss";
