@@ -9,7 +9,7 @@ import {
 } from "./utils";
 import * as localforage from "localforage";
 import { projectClickHandler, switchMode } from "./events";
-import { resolve } from "url";
+// import { resolve } from "url";
 
 const availableCommands = require("../data/commands.json");
 const projects = require("../data/projects.json");

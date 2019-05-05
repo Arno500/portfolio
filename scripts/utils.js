@@ -1,4 +1,4 @@
-import * as HTMLEncoderDecoder from "html-encoder-decoder";
+import { encode as encodeHTML } from "html-encoder-decoder";
 import * as ImagePreloader from "image-preloader";
 const projects = require("../data/projects.json");
 
@@ -90,7 +90,7 @@ export function encodeToHTML(input) {
     input !== undefined &&
     typeof input === "string"
   ) {
-    return HTMLEncoderDecoder.encode(input);
+    return encodeHTML(input);
   } else {
     return input;
   }

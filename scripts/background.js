@@ -1,4 +1,6 @@
 import { throttle } from "lodash-es";
+import { default as Velocity } from "velocity-animate";
+require("velocity-animate/velocity.ui.js");
 
 export function animateBackground() {
   function rand(min, max) {

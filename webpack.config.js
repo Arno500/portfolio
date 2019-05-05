@@ -1,5 +1,8 @@
 var path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
+  .BundleAnalyzerPlugin;
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 var webpack = require("webpack");
 const devMode = process.env.NODE_ENV !== "production";
 
@@ -8,6 +11,12 @@ const webpackConfig = {
   entry: {
     app: "./script.js"
   },
+  optimization: {
+    usedExports: true,
+    minimize: true,
+    minimizer: [new UglifyJsPlugin()],
+    sideEffects: true
+  },
   plugins: [
     new MiniCssExtractPlugin({
       // Options similar to the same options in webpackOptions.output
@@ -15,6 +24,7 @@ const webpackConfig = {
       filename: devMode ? "[name].css" : "[name].[hash].css",
       chunkFilename: devMode ? "[id].css" : "[id].[hash].css"
     })
+    // new BundleAnalyzerPlugin()
   ],
   output: {
     path: path.resolve(__dirname, "dist")
@@ -48,8 +58,10 @@ const webpackConfig = {
                 targets: {
                   // The % refers to the global coverage of users from browserslist
                   browsers: [">0.25%", "ie 11", "not op_mini all"]
-                }
-                //useBuiltIns: "entry"
+                },
+                modules: false,
+                useBuiltIns: "entry",
+                corejs: "3"
               }
             ]
           ]

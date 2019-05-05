@@ -9,5 +9,6 @@
     "script.js",
     "scripts/*"
   ],
-  "liveServer.settings.wait": 1000
+  "liveServer.settings.wait": 1000,
+  "python.pythonPath": "C:\\Python27\\python.exe"
 }

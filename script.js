@@ -5,9 +5,8 @@ import * as utils from "./scripts/utils";
 import * as smoothscroll from "smoothscroll-polyfill";
 import scrollSnapPolyfill from "css-scroll-snap-polyfill";
 import * as localforage from "localforage";
-import "core-js/features/array/iterator";
-import "core-js/web/dom-collections";
-import "@babel/polyfill";
+import "core-js/stable";
+import "regenerator-runtime/runtime";
 
 localforage.config({
   name: "arnauxandco",
@@ -27,8 +26,6 @@ function bootstrap() {
       var msEdgeMatch = /Edge\/([0-9]+)/i.exec(navigator.userAgent);
       if (msEdgeMatch) document.documentMode = parseInt(msEdgeMatch[1]);
     })();
-    const Velocity = require("velocity-animate/velocity");
-    require("velocity-animate/velocity.ui.js");
     anim.animateBackground();
   }
   utils.imagePreloader();
