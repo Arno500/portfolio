@@ -44,8 +44,8 @@
     "type": "link",
     "linkInfos": {
       "icon": "./img/icons/wip.svg",
-      "title": "En ligne mais pas fini (du tout)",
-      "disabled": true
+      "title": "Explorer nos épiceries",
+      "disabled": false
     }
   },
   {

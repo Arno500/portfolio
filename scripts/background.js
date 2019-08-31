@@ -157,15 +157,15 @@ function parallaxPerspective(event) {
     );
   const reductionCoeffX = 3,
     reductionCoeffY = 3,
-    lastTouch = event.touches ? event.touches.length : 0,
+    // lastTouch = event.touches ? event.touches.length : 0,
     pointX =
-      typeof event.pageX !== undefined
+      typeof event.pageX !== "undefined"
         ? event.pageX
-        : event.touches[lastTouch - 1].pageX,
+        : event.targetTouches[0].clientX,
     pointY =
-      typeof event.pageY !== undefined
+      typeof event.pageY !== "undefined"
         ? event.pageY
-        : event.touches[lastTouch - 1].pageY;
+        : event.targetTouches[0].clientY;
   document.querySelector(".animatedbackground").style["perspective-origin"] =
     screenWidth / 2 +
     (screenWidth / 2 - (screenWidth - pointX)) / reductionCoeffX +
