@@ -13,6 +13,26 @@
     }
   },
   {
+    "name": "Animation Charpak 2019",
+    "description": "Le retour ! Après deux ans, elle avait bien besoin d'un petit coup de polish. Donc la voici !",
+    "thumb": "./img/projects/compr-jpg/charpak2019.jpg",
+    "thumbWebp": "./img/projects/compr-webp/charpak2019.webp",
+    "link": "https://youtu.be/Jog1Rg_xSDM",
+    "ytCode": "Jog1Rg_xSDM",
+    "type": "youtube",
+    "action": "link"
+  },
+  {
+    "name": "Animation Charpak 2017",
+    "description": "Les animations, ça pète toujours un peu ;). Ayant un ami à l'Institut Villebon Charpak (je vous invite d'ailleurs à voir ce que c'est ici : <a href=\"https://www.villebon-charpak.fr/\">https://www.villebon-charpak.fr/</a>), je me suis dit qu'un petit logo animé pour les présentations était sympa. Donc j'ai simplement utilisé leur logo et recréé une animation par dessus avec After Effects.",
+    "thumb": "./img/projects/compr-jpg/charpak2017.jpg",
+    "thumbWebp": "./img/projects/compr-webp/charpak2017.webp",
+    "link": "https://youtu.be/vZvmcGwyNxE",
+    "ytCode": "vZvmcGwyNxE",
+    "type": "youtube",
+    "action": "link"
+  },
+  {
     "name": "Rétroception",
     "description": "Un peu comme Inception, mais en mieux. Avec de meilleurs acteurs surtout.<br><i>Quelqu'un qui se sent un peu mal va tenter de poursuivre son futur, tout en se faisant rattraper par son passé.</i> <br><em>Télérama.fr : 4.8/5 \"Éblouissant\"</em>",
     "thumb": "./img/projects/compr-jpg/retroception.jpg",

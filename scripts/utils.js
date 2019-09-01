@@ -97,7 +97,7 @@ export function encodeToHTML(input) {
 }
 
 export function imagePreloader() {
-  let thumbs = projects.map(project => project.thumb);
+  let thumbs = projects.map(project => project.thumbWebp);
   let icons = projects.map(project => {
     if (project.linkInfos) {
       return project.linkInfos.icon;

@@ -63,8 +63,16 @@ export function switchMode(mode) {
 export function projectClickHandler() {
   document.querySelectorAll("[data-name]").forEach(elm => {
     elm.removeEventListener("click", projectClickModal);
+    elm.removeEventListener("keypress", projectKbEventHandler);
     elm.addEventListener("click", projectClickModal);
+    elm.addEventListener("keypress", projectKbEventHandler);
   });
+}
+
+function projectKbEventHandler(event) {
+  if (event.key === " " || event.key === "Enter") {
+    projectClickModal(event);
+  }
 }
 
 function projectClickModal(event) {

@@ -55,13 +55,13 @@
       font-family: $font-family-base;
       color: rgb(37, 37, 37);
     }
-    & > div:not(:first-of-type) {
+    & > li:not(:first-of-type) {
       margin-left: 1rem;
     }
-    & > div:not(:last-of-type) {
+    & > li:not(:last-of-type) {
       margin-right: 1rem;
     }
-    & > div {
+    & > li {
       scroll-snap-align: start;
       scroll-margin: 1em;
       width: 20vw;
@@ -72,6 +72,7 @@
       display: inline-block;
       vertical-align: top;
       white-space: initial;
+      list-style: none;
 
       &:hover {
         background-color: $color-button-hover;
@@ -102,8 +103,12 @@
           h3 {
             font-size: 1.9rem;
             text-align: center;
-            margin-bottom: 0;
+            margin-bottom: 0.2em;
             word-break: normal;
+          }
+          p {
+            word-break: normal;
+            overflow: hidden;
           }
         }
       }

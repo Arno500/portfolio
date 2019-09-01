@@ -20,8 +20,8 @@ html {
   //color: #dde2ff;
   transition: var(--transitions);
   &:focus {
-    outline: none;
-    border: $color-brand solid 3px;
+    outline: $color-brand solid 3px;
+    // border: $color-brand solid 3px;
   }
 }
 

@@ -280,9 +280,9 @@ function mailCommand(args) {
 }
 
 function projectsCommand() {
-  let output = '<div class="projects-container card-model">';
+  let output = '<ul class="projects-container card-model">';
   projects.forEach(project => {
-    output += `<div data-name="${encodeToHTML(
+    output += `<li data-name="${encodeToHTML(
       project.name
     )}" data-description="${encodeToHTML(
       project.description
@@ -290,10 +290,13 @@ function projectsCommand() {
       project.type
     }" data-link="${encodeToHTML(project.link)}" data-yt-code="${encodeToHTML(
       project.ytCode
-    )}" data-link-infos="${encodeToHTML(JSON.stringify(project.linkInfos))}">
+    )}" data-link-infos="${encodeToHTML(JSON.stringify(project.linkInfos))}"
+      tabindex="0"
+    >
       <figure>
       <picture>
         <source type="image/webp" srcset="${project.thumbWebp}">
+        <source type="image/jpeg" srcset="${project.thumb}">
         <img src="${encodeToHTML(project.thumb)}" alt="${encodeToHTML(
       project.name
     )}"></img>
@@ -306,9 +309,9 @@ function projectsCommand() {
           )}</p>
         </figcaption>
       </figure>
-    </div>`;
+    </li>`;
   });
-  output += "</div>";
+  output += "</ul>";
   return {
     output,
     after: projectClickHandler
