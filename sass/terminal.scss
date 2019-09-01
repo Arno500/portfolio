@@ -116,14 +116,14 @@
     @include respond-to(large) {
       height: 41vh;
 
-      & > div {
+      & > li {
         width: 25vw;
       }
     }
     @include respond-to(medium) {
       //height: 50vh;
 
-      & > div {
+      & > li {
         width: 50vw;
         scroll-snap-align: center;
         scroll-margin: initial;
@@ -132,7 +132,7 @@
     @include respond-to(small) {
       height: 44vh;
 
-      & > div {
+      & > li {
         width: 90vw;
       }
     }
