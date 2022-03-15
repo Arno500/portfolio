@@ -24,7 +24,7 @@
     "image-preloader": "^1.1.1",
     "knacss": "^7.1.0",
     "localforage": "^1.7.3",
-    "lodash-es": "^4.17.15",
+    "lodash-es": "^4.17.21",
     "micromodal": "^0.3.2",
     "mini-css-extract-plugin": "^0.4.5",
     "node-sass": "^4.12.0",
